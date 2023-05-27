@@ -54,6 +54,7 @@ public class Register extends HttpServlet {
 		String dob = request.getParameter("dob");
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
+		String password = request.getParameter("password");
 		
 		
 		User user = new User();
@@ -62,6 +63,7 @@ public class Register extends HttpServlet {
 		user.setDob(dob);
 		user.setEmail(email);
 		user.setAddress(address);
+		user.setPassword(password);
 		
 		try {
 			userDao.insertUser(user);

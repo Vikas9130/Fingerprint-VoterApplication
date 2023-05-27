@@ -7,16 +7,25 @@ public class User {
 	private String dob;
 	private String email;
 	private String address;
+	private String password;
 	
 	public User() {
 		
 	}
-	public User(String name, String gender, String dob, String email, String address) {
+	public User(String name, String gender, String dob, String email, String address, String password) {
 		this.name = name;
 		this.gender = gender;
 		this.dob = dob;
 		this.email = email;
 		this.address = address;
+		this.password = password;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getName() {
 		return name;
@@ -51,16 +60,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [name=" + name + ", gender=" + gender + ", dob=" + dob + ", email=" + email + ", address="
-				+ address + "]";
-	}
-	
-	
-	
-	
-
-	
-	
-	
-	
+				+ address + ", password=" + password + "]";
+	}	
 
 }

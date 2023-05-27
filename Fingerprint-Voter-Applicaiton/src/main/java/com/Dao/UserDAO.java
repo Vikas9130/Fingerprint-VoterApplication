@@ -14,7 +14,7 @@ public class UserDAO {
 	private String pass = "system";
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	
-	private static final String insertUser = "insert into user(name, gender, dob, email, address) values(?,?,?,?,?);";
+	private static final String insertUser = "insert into user(name, gender, dob, email, address, password) values(?,?,?,?,?,?);";
 	
 	protected Connection getConnection() {
 		Connection conn = null;
@@ -39,6 +39,7 @@ public class UserDAO {
 			ps.setString(3,user.getDob());
 			ps.setString(4,user.getEmail());
 			ps.setString(5,user.getAddress());
+			ps.setString(6, user.getPassword());
 			System.out.println(ps);
 			ps.executeQuery();		
 		}catch(SQLException e) {
