@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Date;
+//import java.sql.Date;
 import com.Model.User;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class UserDAO {
 	
@@ -59,8 +62,11 @@ DELIMITER ;
 			ps.setString(5,user.getAddress());
 			ps.setString(6, user.getPassword());
 			
-			Date date1 = new Date(System.currentTimeMillis());
-			ps.setDate(7, date1);
+			LocalDateTime localDateTime = LocalDateTime.now();
+		    DateTimeFormatter formatterLocalDateTime = DateTimeFormatter.ofPattern("YYYY-MM-dd hh:mm:ss");
+		    String result = formatterLocalDateTime.format(localDateTime);
+//			Date date1 = new Date(System.currentTimeMillis());
+			ps.setString(7, result);
 			
 			System.out.println(ps);
 			

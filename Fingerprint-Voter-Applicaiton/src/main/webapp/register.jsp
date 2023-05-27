@@ -40,7 +40,7 @@
 
                         <input type="email" id="email" placeholder="Enter Email" name="email" required >
                         
-                        <input type="address" id="address" placeholder="Enter Address" name="address" required >
+                        <input type="text" id="address" placeholder="Enter Address" name="address" required >
 
                         <input type="password" id="password" placeholder="Enter Password" name="password" required >
                         
