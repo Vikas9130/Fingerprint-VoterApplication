@@ -1,5 +1,6 @@
 package com.Controller.Voter;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -40,8 +41,8 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
+		dispatcher.forward(request, response); 
 	}
 
 	/**
@@ -71,7 +72,7 @@ public class Register extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("#");
+		response.sendRedirect("votersuccess.jsp");
 		
 	}
 
