@@ -14,7 +14,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form action="Contact" method="post" style="max-width:350px;margin:auto">
+            <form action="ContactUs" method="post" style="max-width:350px;margin:auto">
                 <center>
                     <div class="container">
                         <h1>Drop us a line</h1>
