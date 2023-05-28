@@ -5,9 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.sql.Date;
+import com.Model.Contact;
 import com.Model.User;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -58,7 +57,6 @@ public class UserDAO {
 			LocalDateTime localDateTime = LocalDateTime.now();
 			DateTimeFormatter formatterLocalDateTime = DateTimeFormatter.ofPattern("YYYY-MM-dd hh:mm:ss");
 			String result = formatterLocalDateTime.format(localDateTime);
-//			Date date1 = new Date(System.currentTimeMillis());
 			ps.setString(7, result);
 
 			System.out.println(ps);
@@ -67,7 +65,20 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
 
+	public static int contactUs(Contact c) throws SQLException {
+		Connection conn = getConnection();
+		int result =0;
+       final String sql="insert into contact(name,email,message) values(?,?,?)";
+        PreparedStatement ps=conn.prepareStatement(sql);
+        ps.setString(1, c.getFullName());
+        ps.setString(2, c.getEmail());
+        ps.setString(3, c.getMessage());
+
+        result =ps.executeUpdate();
+        System.out.println("Contact Us info inserted.");
+        return result;
 	}
 
 }
