@@ -17,11 +17,11 @@
                         <hr>
                         <p align="left">We provide platform for online fair voting.</p>
                         <address>
-                            <small><p><img src="images/gmail.png"  style="width:23px;height:23px;"> You can contact us? <a href="mailto:chhipa.mukul@gmail.com">Gmail</a>.</p></small>
+                            <small><p><img src="images/gmail.png"  style="width:23px;height:23px;"> You can contact us? <a href="mailto:vikaspawar9130@gmail.com">Gmail</a>.</p></small>
 
-                            <small><p><img src="images/github-logo.png"  style="width:23px;height:23px;"> You can contact us? <a href="https://github.com/mukulchhipa/Online-Voting">Github</a>.</p></small>
+                            <small><p><img src="images/github-logo.png"  style="width:23px;height:23px;"> You can contact us? <a href="https://github.com/Vikas9130/Fingerprint-VoterApplication">Github</a>.</p></small>
 
-                            <small><p><img src="images/linkedin.png"  style="width:23px;height:23px;"> You can contact us? <a href="https://www.linkedin.com/in/chhipa-mukul">Linkedin</a>.</p></small>
+                            <small><p><img src="images/linkedin.png"  style="width:23px;height:23px;"> You can contact us? <a href="https://www.linkedin.com/in/vikas-pawar-9bba15200">Linkedin</a>.</p></small>
                         </address>
                         <hr>
                     </div>
