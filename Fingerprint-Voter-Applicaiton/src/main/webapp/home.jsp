@@ -38,7 +38,7 @@
                     </div>
                 </center>
             </form>
-            <div class="login100-more" style="background-image: url('images/vot.jpg');">
+            <div class="login100-more" style="background-image: url('images/ele.jpeg');">
             </div>
         </div>
         <jsp:include page="footer.jsp"></jsp:include>
