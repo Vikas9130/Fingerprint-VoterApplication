@@ -19,6 +19,7 @@ public class UserDAO {
 
 	private static final String insertUser = "insert into voter(name, gender, dob, email, address, password, userCreatedDate) values(?,?,?,?,?,?,?);";
 
+	//connect to database
 	protected static Connection getConnection() {
 		Connection conn = null;
 		try {
@@ -37,6 +38,7 @@ public class UserDAO {
 		return conn;
 	}
 
+	//connect to db, validate user login and return ResultSet
 	public static ResultSet validUserLogin(String sql) throws SQLException {
 		Connection conn = getConnection();
 		PreparedStatement ps=conn.prepareStatement(sql);
@@ -44,6 +46,7 @@ public class UserDAO {
         return rs;
 	}
 
+	//connect to db, insert user record to the voter table
 	public void insertUser(User user) throws SQLException {
 		System.out.println(insertUser);
 		try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(insertUser)) {
@@ -67,6 +70,7 @@ public class UserDAO {
 		}
 	}
 
+	//connect to db, insert contact us info into contact table
 	public static int contactUs(Contact c) throws SQLException {
 		Connection conn = getConnection();
 		int result =0;
