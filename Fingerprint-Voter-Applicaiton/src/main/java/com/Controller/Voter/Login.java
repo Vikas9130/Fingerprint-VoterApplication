@@ -64,7 +64,7 @@ public class Login extends HttpServlet {
         	if(rs.next()){
                 String username= "Welcome "+rs.getString(3);
                 System.out.println(username);
-                request.getRequestDispatcher("votersuccess.jsp").forward(request,response);
+                request.getRequestDispatcher("voterHome.jsp").forward(request,response);
             }else{
                 response.sendRedirect("home.jsp?msg=invalid");
             }

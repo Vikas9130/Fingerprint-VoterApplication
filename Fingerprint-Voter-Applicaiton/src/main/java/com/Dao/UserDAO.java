@@ -20,7 +20,7 @@ public class UserDAO {
 	private static final String insertUser = "insert into voter(name, gender, dob, email, address, password, userCreatedDate) values(?,?,?,?,?,?,?);";
 
 	//connect to database
-	protected static Connection getConnection() {
+	public static Connection getConnection() {
 		Connection conn = null;
 		try {
 			Class.forName(driver);
@@ -60,6 +60,7 @@ public class UserDAO {
 			LocalDateTime localDateTime = LocalDateTime.now();
 			DateTimeFormatter formatterLocalDateTime = DateTimeFormatter.ofPattern("YYYY-MM-dd hh:mm:ss");
 			String result = formatterLocalDateTime.format(localDateTime);
+			System.out.println(result);
 			ps.setString(7, result);
 
 			System.out.println(ps);
