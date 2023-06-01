@@ -29,7 +29,6 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <description></description>
     <display-name>ContactUs</display-name>
@@ -39,5 +38,25 @@
   <servlet-mapping>
     <servlet-name>ContactUs</servlet-name>
     <url-pattern>/ContactUs</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLogin</display-name>
+    <servlet-name>AdminLogin</servlet-name>
+    <servlet-class>com.Controller.Admin.AdminLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLogin</servlet-name>
+    <url-pattern>/AdminLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutAdmin</display-name>
+    <servlet-name>LogoutAdmin</servlet-name>
+    <servlet-class>com.Controller.Admin.LogoutAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutAdmin</servlet-name>
+    <url-pattern>/LogoutAdmin</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -1,5 +1,6 @@
 package com.Dao;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,8 +18,7 @@ public class UserDAO {
 	private static String pass = "system";
 	private static String driver = "com.mysql.cj.jdbc.Driver";
 
-	private static final String insertUser = "insert into voter(name, gender, dob, email, address, password, userCreatedDate) values(?,?,?,?,?,?,?);";
-
+	
 	//connect to database
 	public static Connection getConnection() {
 		Connection conn = null;
@@ -47,7 +47,8 @@ public class UserDAO {
 	}
 
 	//connect to db, insert user record to the voter table
-	public void insertUser(User user) throws SQLException {
+	public void insertUser(User user, InputStream inputStream) throws SQLException {
+		final String insertUser = "insert into voter(name, gender, dob, email, address, password, userCreatedDate, image) values(?,?,?,?,?,?,?,?);";
 		System.out.println(insertUser);
 		try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(insertUser)) {
 			ps.setString(1, user.getName());
@@ -56,12 +57,14 @@ public class UserDAO {
 			ps.setString(4, user.getEmail());
 			ps.setString(5, user.getAddress());
 			ps.setString(6, user.getPassword());
+		
 
 			LocalDateTime localDateTime = LocalDateTime.now();
 			DateTimeFormatter formatterLocalDateTime = DateTimeFormatter.ofPattern("YYYY-MM-dd hh:mm:ss");
 			String result = formatterLocalDateTime.format(localDateTime);
 			System.out.println(result);
 			ps.setString(7, result);
+			ps.setBlob(8,inputStream);
 
 			System.out.println(ps);
 

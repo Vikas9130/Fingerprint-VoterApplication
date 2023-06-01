@@ -25,7 +25,7 @@ if (message != null) {
 	<%
 	Connection conn = UserDAO.getConnection();
 	Statement statement = conn.createStatement();
-	ResultSet resultset = statement.executeQuery("select voter_card_number, name, gender, dob, address, userCreatedDate from voter where voter_card_number='FVA0000012'");
+	ResultSet resultset = statement.executeQuery("select voter_card_number, name, gender, dob, address, userCreatedDate, image from voter where voter_card_number='FVAV000020'");
 	%>
 
 	<%
@@ -66,6 +66,10 @@ if (message != null) {
 								<tr>
 									<th>Date:</th>
 									<td><%=resultset.getString(6)%></td>
+								</tr>
+								<tr>
+									<th>Image:</th>
+									<td> <img src="+'"${<%=resultset.getString(7)%>}'"+" width="240" height="300"/></td>
 								</tr>
 								<%
 								}

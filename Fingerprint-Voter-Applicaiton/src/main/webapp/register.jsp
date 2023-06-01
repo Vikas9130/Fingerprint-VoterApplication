@@ -20,7 +20,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form action="<%=request.getContextPath()%>/Register" name="register" method="post" onsubmit="return regValid()" style="max-width:350px;margin:auto">
+            <form action="<%=request.getContextPath()%>/Register" name="register" method="post" enctype="multipart/form-data" onsubmit="return regValid()" style="max-width:350px;margin:auto">
                 <center>
                     <div class="container">
                         <h1>Register</h1>
@@ -45,6 +45,7 @@
                         <input type="password" id="password" placeholder="Enter Password" name="password" required >
                         
                         <hr>
+                        <input type="file" placeholder="Upload File" name="image" size="50"><br/><br/>
                         
                         <small><p>By creating an account you agree to our<a href="termsNConditions.jsp">Terms & Privacy</a>.</p></small>
                         
