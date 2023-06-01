@@ -11,6 +11,8 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import jakarta.servlet.http.HttpSession;
+
 import com.Dao.UserDAO;
 import com.Model.User;
 
@@ -41,14 +43,26 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession();
+        String action = request.getParameter("action");
+        if (action == null) {
+            request.getRequestDispatcher("home.jsp").forward(request, response);
+        } else {
+            if (action.equalsIgnoreCase("logout")) {
+                session.removeAttribute("voterId");
+                session.removeAttribute("uname");
+                response.sendRedirect("home.jsp");
+            }
+        }
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		  HttpSession session = request.getSession();
+	      String action=request.getParameter("action");
 		
 		String voterId = request.getParameter("voter_card_number");
         String password = request.getParameter("password");
@@ -63,9 +77,12 @@ public class Login extends HttpServlet {
         	ResultSet rs = UserDAO.validUserLogin(sql);
         	if(rs.next()){
                 String username= "Welcome "+rs.getString(3);
+                session.setAttribute("voterId",voterId);
+                session.setAttribute("uname",username);
                 System.out.println(username);
                 request.getRequestDispatcher("voterHome.jsp").forward(request,response);
             }else{
+            	request.setAttribute("error", "Invalid Account");
                 response.sendRedirect("home.jsp?msg=invalid");
             }
         }catch(SQLException e) {
