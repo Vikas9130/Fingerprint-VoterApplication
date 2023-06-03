@@ -17,7 +17,7 @@ if (message != null) {
 		alert("Please enter valid date! You should be 18 to give vote");
 		window.location.href = "register.jsp";
 	<%}
-						}%>
+}%>
 		
 	</script>
 
@@ -25,7 +25,10 @@ if (message != null) {
 	<%
 	Connection conn = UserDAO.getConnection();
 	Statement statement = conn.createStatement();
-	ResultSet resultset = statement.executeQuery("select voter_card_number, name, gender, dob, address, userCreatedDate, image from voter where voter_card_number='FVAV000020'");
+	ResultSet resultset = statement.executeQuery(
+			"select voter_card_number, name, gender, dob, address, userCreatedDate from voter where voter_card_number='FVAV000006'");
+	String imageFileName = (String) request.getAttribute("image1");
+	System.out.println(imageFileName);
 	%>
 
 	<%
@@ -69,7 +72,10 @@ if (message != null) {
 								</tr>
 								<tr>
 									<th>Image:</th>
-									<td> <img src="+'"${<%=resultset.getString(7)%>}'"+" width="240" height="300"/></td>
+									<td><img
+										src="C:/Users/91913/git/Fingerprint-VoterApplication/Fingerprint-Voter-Applicaiton/src/main/webapp/voterImages/<%=imageFileName%>
+									"
+										width="125" height="150" alt="Voter Photo" /></td>
 								</tr>
 								<%
 								}

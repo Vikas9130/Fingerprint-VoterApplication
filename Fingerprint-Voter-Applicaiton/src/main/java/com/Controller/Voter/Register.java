@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
+import java.awt.image.ImageFilter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -65,27 +67,34 @@ public class Register extends HttpServlet {
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
 		String password = request.getParameter("password");
-		InputStream inputStream=null;
-        Part filePart=request.getPart("image");
-        if(filePart!=null){
-            inputStream=filePart.getInputStream();
-        }
-
-		User user = new User();
-		user.setName(name);
-		user.setGender(gender);
-		user.setDob(dob);
-		user.setEmail(email);
-		user.setAddress(address);
-		user.setPassword(password);
 
 		try {
-			userDao.insertUser(user, inputStream);
-		} catch (SQLException e) {
+			User user = new User();
+			user.setName(name);
+			user.setGender(gender);
+			user.setDob(dob);
+			user.setEmail(email);
+			user.setAddress(address);
+			user.setPassword(password);
+			InputStream inputStream = null;
+			Part filePart = request.getPart("image");
+			String imageFileName = filePart.getSubmittedFileName();
+			String uploadPath = "C:/Users/91913/git/Fingerprint-VoterApplication/Fingerprint-Voter-Applicaiton/src/main/webapp/voterImages/"
+					+ imageFileName;
+			FileOutputStream fos = new FileOutputStream(uploadPath);
+			inputStream = filePart.getInputStream();
+			byte[] data = new byte[inputStream.available()];
+			inputStream.read(data);
+			fos.write(data);
+			fos.close();
+			userDao.insertUser(user, imageFileName);
+			request.setAttribute("image1", uploadPath);
+			RequestDispatcher rd = request.getRequestDispatcher("votersuccess.jsp");
+			rd.forward(request, response);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		response.sendRedirect("voterSuccess.jsp");
+		
 
 	}
 

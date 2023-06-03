@@ -17,7 +17,7 @@ if (message != null) {
 		alert("Please enter valid date! You should be 18 to give vote");
 		window.location.href = "register.jsp";
 	<%}
-						}%>
+}%>
 		
 	</script>
 
@@ -25,7 +25,8 @@ if (message != null) {
 	<%
 	Connection conn = UserDAO.getConnection();
 	Statement statement = conn.createStatement();
-	ResultSet resultset = statement.executeQuery("select voter_card_number, name, gender, dob, address, userCreatedDate, image from voter where voter_card_number='FVAV000020'");
+	ResultSet resultset = statement.executeQuery(
+			"select voter_card_number, name, gender, dob, address, userCreatedDate, image from voter where voter_card_number='FVAV000020'");
 	%>
 
 	<%
@@ -36,9 +37,7 @@ if (message != null) {
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form action="<%=request.getContextPath()%>/Register"
-					name="register" method="post" onsubmit="return regValid()"
-					style="max-width: 350px; margin: auto">
+				
 					<center>
 						<div class="container">
 
@@ -69,7 +68,7 @@ if (message != null) {
 								</tr>
 								<tr>
 									<th>Image:</th>
-									<td> <img src="+'"${<%=resultset.getString(7)%>}'"+" width="240" height="300"/></td>
+									<td><img src="${resultset.getString(7)}" width="240" height="300" /></td>
 								</tr>
 								<%
 								}
