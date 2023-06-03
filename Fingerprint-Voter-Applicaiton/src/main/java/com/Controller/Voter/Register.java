@@ -88,7 +88,8 @@ public class Register extends HttpServlet {
 			fos.write(data);
 			fos.close();
 			userDao.insertUser(user, imageFileName);
-			request.setAttribute("image1", uploadPath);
+			request.setAttribute("image1", imageFileName);
+			request.setAttribute("userName", name);
 			RequestDispatcher rd = request.getRequestDispatcher("votersuccess.jsp");
 			rd.forward(request, response);
 		} catch (Exception e) {

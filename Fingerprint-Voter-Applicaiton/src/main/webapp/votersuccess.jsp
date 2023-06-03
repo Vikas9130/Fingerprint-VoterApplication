@@ -25,8 +25,9 @@ if (message != null) {
 	<%
 	Connection conn = UserDAO.getConnection();
 	Statement statement = conn.createStatement();
+	String userName = (String) request.getAttribute("userName");
 	ResultSet resultset = statement.executeQuery(
-			"select voter_card_number, name, gender, dob, address, userCreatedDate from voter where voter_card_number='FVAV000006'");
+			"SELECT voter_card_number, name, gender, dob, address, userCreatedDate FROM voter WHERE name = '" + userName + "'");
 	String imageFileName = (String) request.getAttribute("image1");
 	System.out.println(imageFileName);
 	%>
@@ -72,10 +73,7 @@ if (message != null) {
 								</tr>
 								<tr>
 									<th>Image:</th>
-									<td><img
-										src="C:/Users/91913/git/Fingerprint-VoterApplication/Fingerprint-Voter-Applicaiton/src/main/webapp/voterImages/<%=imageFileName%>
-									"
-										width="125" height="150" alt="Voter Photo" /></td>
+									<td><img src="voterImages/<%= imageFileName %>" width="125" height="150" alt="Voter Photo" /></td>
 								</tr>
 								<%
 								}

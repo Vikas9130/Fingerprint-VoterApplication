@@ -47,7 +47,7 @@ public class UserDAO {
 	}
 
 	//connect to db, insert user record to the voter table
-	public void insertUser(User user, InputStream inputStream) throws SQLException {
+	public void insertUser(User user, String imageFileName) throws SQLException {
 		final String insertUser = "insert into voter(name, gender, dob, email, address, password, userCreatedDate, image) values(?,?,?,?,?,?,?,?);";
 		System.out.println(insertUser);
 		try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(insertUser)) {
@@ -64,7 +64,7 @@ public class UserDAO {
 			String result = formatterLocalDateTime.format(localDateTime);
 			System.out.println(result);
 			ps.setString(7, result);
-			ps.setBlob(8,inputStream);
+			ps.setString(8,imageFileName);
 
 			System.out.println(ps);
 
