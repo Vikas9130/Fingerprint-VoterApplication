@@ -43,7 +43,7 @@ public class AdminLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession sessionAdmin = (HttpSession) request.getSession();
+		HttpSession sessionAdmin =  request.getSession();
         String action = request.getParameter("action");
         if (action == null) {
             request.getRequestDispatcher("adminPanel.jsp").forward(request, response);
@@ -60,7 +60,7 @@ public class AdminLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession sessionAdmin=(HttpSession) request.getSession();
+        HttpSession sessionAdmin= request.getSession();
         String action=request.getParameter("action");
 
         String username = request.getParameter("username");
