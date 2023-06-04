@@ -1,75 +1,31 @@
 @charset "ISO-8859-1";
-.button-click {
-  float:none
+
+.button-click,
+.button-center,
+.button-left,
+.button-right {
+  float: none;
   display: block;
-margin: 20px auto;
-padding: 10px 20px;
-font-size: 16px;
-background-color: #4CAF50;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-}
-
-.button:hover {
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
   background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-
-
-
-
-
+.button-click:hover,
+.button-center:hover,
+.button-left:hover,
+.button-right:hover {
+  background-color: #45a049;
+}
 
 .button-container {
   text-align: center;
 }
-
-.button-center {
-  float:none
-  display: block;
-margin: 20px auto;
-padding: 10px 20px;
-font-size: 16px;
-background-color: #4CAF50;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-}
-
-.button-left {
-  float: left;
-  display: block;
-margin: 20px auto;
-padding: 10px 20px;
-font-size: 16px;
-background-color: #4CAF50;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-}
-
-.button-right {
-  float: right;
-  display: block;
-margin: 20px auto;
-padding: 10px 20px;
-font-size: 16px;
-background-color: #4CAF50;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-}
-
-
-
-
-
-
 
 body {
   font-family: Arial, sans-serif;
@@ -106,19 +62,21 @@ label {
 input[type="text"],
 input[type="date"],
 textarea {
+  border-radius: 10px;
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  border-radius: 4px;
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
 
 .file-input {
+  border-radius: 10px;
   display: none;
 }
 
 .file-label {
+  border-radius: 10px;
   display: inline-block;
   padding: 8px 16px;
   font-size: 14px;
@@ -136,7 +94,7 @@ textarea {
 .form-group .image-preview {
   max-width: 100%;
   margin-top: 10px;
-  border-radius: 4px;
+  border-radius: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -148,7 +106,7 @@ textarea {
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
 }
 

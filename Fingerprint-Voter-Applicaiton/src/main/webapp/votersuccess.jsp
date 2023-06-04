@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="com.Dao.UserDAO"%>
@@ -16,8 +15,9 @@
 	Connection conn = UserDAO.getConnection();
 	Statement statement = conn.createStatement();
 	String userName = (String) session.getAttribute("userName");
-	ResultSet resultset = statement.executeQuery(
-			"SELECT voter_card_number, name, dob, address, userCreatedDate FROM voter WHERE name = '" + userName + "'");
+	String query = "SELECT voter_card_number, name, dob, address FROM voter WHERE name = '" + userName + "'";
+	ResultSet resultset = statement.executeQuery(query);
+	System.out.println(query);		
 	String imageFileName = (String) request.getAttribute("image1");
 	System.out.println(imageFileName);
 	%>
@@ -56,7 +56,5 @@
 	</div>
 </body>
 </html>
-
-
 
 

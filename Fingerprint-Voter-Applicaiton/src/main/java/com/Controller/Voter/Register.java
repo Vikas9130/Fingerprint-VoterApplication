@@ -10,11 +10,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
-import java.awt.image.ImageFilter;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.SQLException;
+
 
 import com.Dao.UserDAO;
 import com.Model.User;
@@ -28,7 +28,7 @@ public class Register extends HttpServlet {
 
 	private static final InputStream InputStream = null;
 
-	private UserDAO userDao = new UserDAO();
+	
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -71,18 +71,23 @@ public class Register extends HttpServlet {
 		
 		HttpSession session = request.getSession();
         session.setAttribute("userName", name);
+        
+        User user = new User();
+		user.setName(name);
+		user.setGender(gender);
+		user.setDob(dob);
+		user.setEmail(email);
+		user.setAddress(address);
+		user.setPassword(password);
 
+		UserDAO userDao = new UserDAO();
+		
 		try {
-			User user = new User();
-			user.setName(name);
-			user.setGender(gender);
-			user.setDob(dob);
-			user.setEmail(email);
-			user.setAddress(address);
-			user.setPassword(password);
+			
 			InputStream inputStream = null;
 			Part filePart = request.getPart("image");
 			String imageFileName = filePart.getSubmittedFileName();
+			System.out.println(imageFileName);
 			String uploadPath = "C:/Users/91913/git/Fingerprint-VoterApplication/Fingerprint-Voter-Applicaiton/src/main/webapp/voterImages/"
 					+ imageFileName;
 			FileOutputStream fos = new FileOutputStream(uploadPath);

@@ -3,8 +3,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/body.css" rel='stylesheet' type='text/css' />
+      <script type="text/javascript">
+    // Disable the back button
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+      history.pushState(null, null, document.URL);
+    });
+  </script>
 </head>
 <body >
+
+
+
+
+
 <%
     String message= request.getParameter("msg");
 %>

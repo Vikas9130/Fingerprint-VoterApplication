@@ -8,10 +8,20 @@
 <link href="css/body.css" rel='stylesheet' type='text/css' />
  <link rel="stylesheet" href="css/style.css"type='text/css' />
 <script type="text/javascript" src="js/formValidation.js"></script>
+
+  <script type="text/javascript">
+    // Disable going back to login.jsp
+    history.pushState(null, null, location.href);
+    window.addEventListener('popstate', function () {
+      history.pushState(null, null, location.href);
+    });
+  </script>
 </head>
 <body>
 
 	<jsp:include page="header.jsp"></jsp:include>
+
+	
 	<%
 	Connection conn = UserDAO.getConnection();
 	Statement statement = conn.createStatement();
