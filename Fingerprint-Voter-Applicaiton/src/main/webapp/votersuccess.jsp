@@ -52,6 +52,7 @@
 		<%
 		}
 		%>
+		<p> <small>NOTE: Remember the voter card number and password!</small></p>
 	</div>
 </body>
 </html>
