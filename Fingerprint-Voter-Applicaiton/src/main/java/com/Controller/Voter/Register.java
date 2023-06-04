@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
 import java.awt.image.ImageFilter;
@@ -67,6 +68,9 @@ public class Register extends HttpServlet {
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
 		String password = request.getParameter("password");
+		
+		HttpSession session = request.getSession();
+        session.setAttribute("userName", name);
 
 		try {
 			User user = new User();
@@ -89,7 +93,6 @@ public class Register extends HttpServlet {
 			fos.close();
 			userDao.insertUser(user, imageFileName);
 			request.setAttribute("image1", imageFileName);
-			request.setAttribute("userName", name);
 			RequestDispatcher rd = request.getRequestDispatcher("votersuccess.jsp");
 			rd.forward(request, response);
 		} catch (Exception e) {
