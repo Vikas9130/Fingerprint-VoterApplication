@@ -6,28 +6,18 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/body.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="css/style.css" type='text/css'>
 <script type="text/javascript" src="js/formValidation.js"></script>
 </head>
 <body>
-	<script type="text/javascript">
-		
-	<%String message = request.getParameter("msg");
-if (message != null) {
-	if (message.equals("date")) {%>
-		alert("Please enter valid date! You should be 18 to give vote");
-		window.location.href = "register.jsp";
-	<%}
-}%>
-		
-	</script>
 
-	<jsp:include page="header.jsp"></jsp:include>
+
 	<%
 	Connection conn = UserDAO.getConnection();
 	Statement statement = conn.createStatement();
-	String userName = (String) request.getAttribute("userName");
+	String userName = (String) session.getAttribute("userName");
 	ResultSet resultset = statement.executeQuery(
-			"SELECT voter_card_number, name, gender, dob, address, userCreatedDate FROM voter WHERE name = '" + userName + "'");
+			"SELECT voter_card_number, name, dob, address, userCreatedDate FROM voter WHERE name = '" + userName + "'");
 	String imageFileName = (String) request.getAttribute("image1");
 	System.out.println(imageFileName);
 	%>
@@ -36,77 +26,37 @@ if (message != null) {
 	while (resultset.next()) {
 	%>
 
+	<div class="container">
+		<h1>Voter Details</h1>
 
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form action="<%=request.getContextPath()%>/Register"
-					name="register" method="post" onsubmit="return regValid()"
-					style="max-width: 350px; margin: auto">
-					<center>
-						<div class="container">
-
-							<table>
-								<tr>
-									<th>Voter Card Number:</th>
-									<td><%=resultset.getString(1)%></td>
-								</tr>
-								<tr>
-									<th>Voter Name:</th>
-									<td><%=resultset.getString(2)%></td>
-								</tr>
-								<tr>
-									<th>Gender:</th>
-									<td><%=resultset.getString(3)%></td>
-								</tr>
-								<tr>
-									<th>Date of Birth:</th>
-									<td><%=resultset.getString(4)%></td>
-								</tr>
-								<tr>
-									<th>Address:</th>
-									<td><%=resultset.getString(5)%></td>
-								</tr>
-								<tr>
-									<th>Date:</th>
-									<td><%=resultset.getString(6)%></td>
-								</tr>
-								<tr>
-									<th>Image:</th>
-									<td><img src="voterImages/<%= imageFileName %>" width="125" height="150" alt="Voter Photo" /></td>
-								</tr>
-								<%
-								}
-								%>
-							</table>
-
-
-
-						</div>
-						<div class="container signin">
-							<%
-							if (message != null) {
-								if (message.equals("failed")) {
-							%>
-							<img src="images/alert-16.png" alt="Computer Man"
-								style="width: 23px; height: 23px;" autofocus> <font
-								color="#ff0000">Failed to Register</font>
-							<%
-							}
-							}
-							%>
-							<small><p>
-									Already have an account? <a href="home.jsp">Sign in</a>.
-								</p></small>
-						</div>
-					</center>
-				</form>
-				<div class="login100-more"
-					style="background-image: url('images/ele.jpeg');"></div>
-			</div>
-			<jsp:include page="footer.jsp"></jsp:include>
+		<div class="form-group">
+			<label for="voter-card-number">Voter Card Number:<%=resultset.getString(1)%></label>
 		</div>
+		<div class="form-group">
+			<label for="voter-name">Voter Name:<%=resultset.getString(2)%></label>
+		</div>
+		<div class="form-group">
+			<label for="date-of-birth">Date of Birth:<%=resultset.getString(3)%></label>
+		</div>
+		<div class="form-group">
+			<label for="address">Address:<%=resultset.getString(4)%></label>
+		</div>
+		<div class="form-group">
+			<label>Voter Photo: </label> <img id="photo-preview"
+				class="image-preview" src="voterImages/<%=imageFileName%>"
+				alt="Photo Preview" width="125" height="150">
+		</div>
+		<div class="button-container">
+			<a href="home.jsp" class="button-click">Login</a>
+		</div>
+		<%
+		}
+		%>
 	</div>
+
+
+
+
 </body>
 </html>
 
