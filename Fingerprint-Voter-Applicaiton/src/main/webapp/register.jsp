@@ -129,7 +129,7 @@
 						%>
 						<div class="button-container">
 							<small><p>Already have an account?</p></small><a
-								href="https://www.example.com" class="button-click">Login</a>
+								href="home.jsp" class="button-click">Login</a>
 						</div>
 
 					</div>
