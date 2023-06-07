@@ -59,10 +59,11 @@
 			<div class="button-container">
 				<a href="voterUpdation.jsp" class="button-right">Update Details</a>
 			</div>
-			<div class="button-container">
-				<a href="#" class="button-center">result</a>
-			</div>
-
+			<form action="GetResult" method="get">
+				<div class="button-container">
+					<button type="submit" class="button-center">result</button>
+				</div>
+			</form>
 
 
 		</div>

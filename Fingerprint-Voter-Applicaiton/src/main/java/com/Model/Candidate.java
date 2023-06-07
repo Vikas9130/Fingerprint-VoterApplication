@@ -5,12 +5,34 @@ public class Candidate {
 	private String candidateName;
 	private String candidateAddress;
 	private String candidatePhoto;
-
+	private int voterCount;
 	public Candidate() {
 		
 	}
 	
 	
+
+
+	public int getVoterCount() {
+		return voterCount;
+	}
+
+	public void setVoterCount(int voterCount) {
+		this.voterCount = voterCount;
+	}
+
+
+	public Candidate(String candidateName, String candidatePhoto, int voterCount) {
+		super();
+		this.candidateName = candidateName;
+		this.candidatePhoto = candidatePhoto;
+		this.voterCount = voterCount;
+	}
+
+
+
+
+
 	public Candidate(int candidateId, String candidateName, String candidateAddress, String candidatePhoto) {
 		this.candidateId = candidateId;
 		this.candidateName = candidateName;

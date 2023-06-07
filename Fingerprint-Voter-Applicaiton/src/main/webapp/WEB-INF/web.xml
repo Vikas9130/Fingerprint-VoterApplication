@@ -99,4 +99,14 @@
     <servlet-name>VoteServlet</servlet-name>
     <url-pattern>/voteServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetResult</display-name>
+    <servlet-name>GetResult</servlet-name>
+    <servlet-class>com.Controller.Result.GetResult</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetResult</servlet-name>
+    <url-pattern>/GetResult</url-pattern>
+  </servlet-mapping>
 </web-app>
