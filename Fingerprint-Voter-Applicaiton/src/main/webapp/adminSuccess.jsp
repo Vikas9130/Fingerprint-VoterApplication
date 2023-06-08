@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-
+<link rel="stylesheet" href="css/style.css" type='text/css'>
 <style>
 .button-container {
 	margin: 10px;
@@ -26,7 +26,7 @@
 
 
 <body>
-	<button onclick="redirectToNextPage()">Add Candidate</button>
+	<button class="submit-button" onclick="redirectToNextPage()">Add Candidate</button>
 
     <script>
         function redirectToNextPage() {

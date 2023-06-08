@@ -15,17 +15,62 @@
 </head>
 <body>
 	<script type="text/javascript">
-		
-	<%
-		String message = request.getParameter("msg");
-		if (message != null && message.equals("date")) {
-	%>
-			alert("Please enter a valid date! You should be 18 to vote.");
-			window.location.href = "register.jsp";
-	<%
+		// Function to validate the form fields
+		function validateForm() {
+			var nameInput = document.getElementById("name");
+			var genderSelect = document.getElementById("gender");
+			var dobInput = document.getElementById("dob");
+			var emailInput = document.getElementById("email");
+			var addressInput = document.getElementById("address");
+			var passwordInput = document.getElementById("password");
+			var photoInput = document.getElementById("photo-input");
+
+			// Check if required fields are empty
+			if (
+				nameInput.value === "" ||
+				genderSelect.value === "" ||
+				dobInput.value === "" ||
+				emailInput.value === "" ||
+				addressInput.value === "" ||
+				passwordInput.value === "" ||
+				photoInput.value === ""
+			) {
+				alert("Please fill in all the required fields.");
+				return false;
+			}
+
+			// Additional validation logic for specific fields (e.g., email format, age check)
+
+			// Validate email format using a regular expression
+			var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (!emailRegex.test(emailInput.value)) {
+				alert("Please enter a valid email address.");
+				return false;
+			}
+
+			// Check if the user is at least 18 years old based on the provided date of birth
+			var currentDate = new Date();
+			var dobDate = new Date(dobInput.value);
+			var age = currentDate.getFullYear() - dobDate.getFullYear();
+			if (age < 18) {
+				alert("You must be at least 18 years old to register.");
+				return false;
+			}
+
+			
+			 // Validate the password field
+			  var passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+			  if (!passwordRegex.test(passwordInput.value)) {
+			    alert(
+			      "Password should be at least 8 characters long and contain at least one capital letter, one symbol character, and numbers."
+			    );
+			    return false;
+			  }
+			// Other validation rules can be added as needed
+
+			// If all validation passes, the form will be submitted
+			return true;
 		}
-	%>
-		
 	</script>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="limiter">
@@ -33,8 +78,9 @@
 			<div class="wrap-login100">
 				<form action="${pageContext.request.contextPath}/Register"
 					name="register" method="post" enctype="multipart/form-data"
-					onsubmit="return regValid()" style="max-width: 350px; margin: auto">
+					onsubmit="return validateForm()" style="max-width: 350px; margin: auto">
 
+				
 					<div class="container">
 						<h1>Register</h1>
 						<p>Please fill in this form to create an account.</p>
@@ -118,15 +164,7 @@
 
 					</div>
 					<div class="container signin">
-						<%
-						if (message != null && message.equals("failed")) {
-						%>
-						<img src="images/alert-16.png" alt="Computer Man"
-							style="width: 23px; height: 23px;" autofocus> <font
-							color="#ff0000">Failed to Register</font>
-						<%
-						}
-						%>
+					
 						<div class="button-container">
 							<small><p>Already have an account?</p></small><a
 								href="home.jsp" class="button-click">Login</a>
@@ -135,9 +173,7 @@
 					</div>
 
 				</form>
-
 			</div>
-
 		</div>
 	</div>
 </body>

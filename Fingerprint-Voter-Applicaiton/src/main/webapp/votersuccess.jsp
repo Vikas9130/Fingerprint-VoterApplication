@@ -17,7 +17,7 @@
 	String userName = (String) session.getAttribute("userName");
 	String query = "SELECT voter_card_number, name, dob, address FROM voter WHERE name = '" + userName + "'";
 	ResultSet resultset = statement.executeQuery(query);
-	System.out.println(query);		
+	System.out.println(query);
 	String imageFileName = (String) request.getAttribute("image1");
 	System.out.println(imageFileName);
 	%>
@@ -47,12 +47,21 @@
 				alt="Photo Preview" width="125" height="150">
 		</div>
 		<div class="button-container">
-			<a href="home.jsp" class="button-click">Login</a>
+			<button class="submit-button" onclick="redirectToNextPage()">Login</button>
+
+			<script>
+				function redirectToNextPage() {
+					window.location.href = "home.jsp";
+				}
+			</script>
+
 		</div>
 		<%
 		}
 		%>
-		<p> <small>NOTE: Remember the voter card number and password!</small></p>
+		<p>
+			<small>NOTE: Remember the voter card number and password!</small>
+		</p>
 	</div>
 </body>
 </html>

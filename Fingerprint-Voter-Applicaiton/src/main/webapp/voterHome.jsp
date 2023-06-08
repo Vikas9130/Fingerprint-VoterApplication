@@ -51,19 +51,35 @@
 				alt="Photo Preview" width="125" height="150">
 		</div>
 		<div class="container">
-			<form action="CandidateList" method="GET">
-				<div class="button-container">
-					<button type="submit" class="button-left">Vote</button>
-				</div>
-			</form>
-			<div class="button-container">
-				<a href="voterUpdation.jsp" class="button-right">Update Details</a>
-			</div>
-			<form action="GetResult" method="get">
-				<div class="button-container">
-					<button type="submit" class="button-center">result</button>
-				</div>
-			</form>
+
+			<button class="button-left" onclick="redirectToNextPage()">Vote</button>
+
+			<script>
+				function redirectToNextPage() {
+					window.location.href = "candidateList.jsp";
+				}
+			</script>
+
+
+
+			<button class="button-right" onclick="redirectToNextPage()">Update
+				Details</button>
+
+			<script>
+				function redirectToNextPage() {
+					window.location.href = "voterUpdation.jsp";
+				}
+			</script>
+
+
+
+			<button class="button-center" onclick="redirectToNextPage()">Result</button>
+
+			<script>
+				function redirectToNextPage() {
+					window.location.href = "result.jsp";
+				}
+			</script>
 
 
 		</div>
