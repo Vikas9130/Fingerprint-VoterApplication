@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/style.css" type='text/css'>
 </head>
 <body>
  <div class="container">
@@ -25,7 +26,7 @@
         <label for="photo">Photo:</label>
         <input type="file" id="photo" name="photo" accept="image/*" required><br><br>
 
-        <input type="submit" value="Add Candidate">
+        <input class="submit-button" type="submit" value="Add Candidate">
     </form>
       </div>
 
