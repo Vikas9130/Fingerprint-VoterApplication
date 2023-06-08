@@ -149,4 +149,24 @@
     <servlet-name>UpdateVoterButton</servlet-name>
     <url-pattern>/UpdateVoterButton</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddCandidate</display-name>
+    <servlet-name>AddCandidate</servlet-name>
+    <servlet-class>com.Controller.Condidate.AddCandidate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCandidate</servlet-name>
+    <url-pattern>/AddCandidate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLoginServlet</display-name>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <servlet-class>com.Controller.Admin.AdminLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <url-pattern>/AdminLoginServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

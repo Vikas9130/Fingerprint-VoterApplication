@@ -35,10 +35,10 @@ public class GetResult extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Candidate> candidates1;
+		List<Candidate> candidates;
 		try {
-			candidates1 = retrieveCandidates();
-			request.setAttribute("candidates1", candidates1);
+			candidates = retrieveCandidates();
+			request.setAttribute("candidates1", candidates);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,7 +50,7 @@ public class GetResult extends HttpServlet {
 	}
 	
 	private List<Candidate> retrieveCandidates() throws ClassNotFoundException {
-		List<Candidate> candidates1 = new ArrayList<>();
+		List<Candidate> candidates = new ArrayList<>();
 	    Connection connection = null;
 	    PreparedStatement statement = null;
 	    ResultSet resultSet = null;
@@ -73,7 +73,7 @@ String sql = "SELECT candidate_name, candidate_photo, vote_count FROM candidate"
 	          String candidatePhoto = resultSet.getString("candidate_photo");
 	          int voterCount = resultSet.getInt("vote_count");
 	          Candidate candidate = new Candidate(candidateName, candidatePhoto, voterCount);
-	          candidates1.add(candidate);
+	          candidates.add(candidate);
 	      }
 	    } catch (SQLException e) {
 	      e.printStackTrace();
@@ -94,7 +94,7 @@ String sql = "SELECT candidate_name, candidate_photo, vote_count FROM candidate"
 	      }
 	    }
 
-	    return candidates1;
+	    return candidates;
 	  }
 
 	

@@ -34,9 +34,14 @@ public class AdminDAO {
 	}
 	public static ResultSet loginValidation(String sql) throws SQLException{
 		Connection conn = AdminDAO.getConnection();
+		if(conn!=null) {
+			System.out.println("connected");
+		}else {
+			System.out.println("not connected");
+		}
         PreparedStatement ps=conn.prepareStatement(sql);
         ResultSet rs  = ps.executeQuery();
-        System.out.println(sql);
+        System.out.println(rs);
         return rs;
     }
 

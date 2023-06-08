@@ -1,5 +1,6 @@
 package com.Controller.Admin;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,14 +24,14 @@ import java.sql.SQLException;
  */
 public class AdminLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AdminLogin() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AdminLogin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Servlet#init(ServletConfig)
@@ -40,56 +41,52 @@ public class AdminLogin extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession sessionAdmin =  request.getSession();
-        String action = request.getParameter("action");
-        if (action == null) {
-            request.getRequestDispatcher("adminPanel.jsp").forward(request, response);
-        } else {
-            if (action.equalsIgnoreCase("logout")) {
-                sessionAdmin.removeAttribute("adminId");
-                sessionAdmin.removeAttribute("adminNname");
-                response.sendRedirect("adminPanel.jsp");
-            }
-        }
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession sessionAdmin= request.getSession();
-        String action=request.getParameter("action");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession sessionAdmin = request.getSession();
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 
-        Admin m=new Admin();
-        m.setName(username);
-        m.setPassword(password);
+		Admin admin = new Admin();
+		admin.setName(username);
+		admin.setPassword(password);
 
-        String sql="select adminId,name,password from admin where name='"+username+"' and password='"+password+"'";
+		String sql = "SELECT adminId, name, password FROM admin WHERE name='"+username+"' and password='"+password+"'";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/evoting", "root",
+					"system");
+			PreparedStatement statement = connection.prepareStatement(sql);
+			ResultSet rs = statement.executeQuery();
+			if (rs.next()) {
+				String uname = "Welcome " + rs.getString(2);
+				String adminId = String.valueOf(rs.getInt(1));
+				sessionAdmin.setAttribute("adminId", adminId);
+				sessionAdmin.setAttribute("adminName", uname);
+				RequestDispatcher rd = request.getRequestDispatcher("adminSuccess.jsp");
+				rd.forward(request, response);
 
-        try {
-            ResultSet rs=AdminDAO.loginValidation(sql);
-           
-            if(rs.next()){
-                String uname= "Welcome "+rs.getString(2);
-                String adminId=String.valueOf(rs.getInt(1));
-                sessionAdmin.setAttribute("adminId",adminId);
-                sessionAdmin.setAttribute("adminName",uname);
-                request.getRequestDispatcher("adminSuccess.jsp").forward(request,response);
-        
-            }else{
-                request.setAttribute("error", "Invalid Account");
-                response.sendRedirect("adminPanel.jsp?msg=invalid");
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
 	}
 
 }

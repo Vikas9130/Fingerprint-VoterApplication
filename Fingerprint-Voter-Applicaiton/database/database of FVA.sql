@@ -18,19 +18,11 @@
     
     SET SQL_SAFE_UPDATES = 0;
     
-    CREATE TABLE candidate (
+   CREATE TABLE candidate (
   candidate_id INT AUTO_INCREMENT PRIMARY KEY,
   candidate_name VARCHAR(255) NOT NULL,
+  candidate_gender VARCHAR(10) NOT NULL,
   candidate_address VARCHAR(255) NOT NULL,
-  candidate_photo VARCHAR(255) NOT NULL
-);
-
-
-CREATE TABLE voter_count (
-  voter_card_number VARCHAR(10) NOT NULL,
-  candidate_id INT NOT NULL,
-  count INT,
-  PRIMARY KEY (voter_card_number, candidate_id),
-  FOREIGN KEY (voter_card_number) REFERENCES voter (voter_card_number),
-  FOREIGN KEY (candidate_id) REFERENCES candidate (candidate_id)
+  candidate_photo LONGBLOB NOT NULL,
+  vote_count INT default'0'
 );
