@@ -5,34 +5,8 @@ public class Candidate {
 	private String candidateName;
 	private String candidateAddress;
 	private String candidatePhoto;
-	private int voterCount;
-	public Candidate() {
-		
-	}
+	private int voteCount;
 	
-	
-
-
-	public int getVoterCount() {
-		return voterCount;
-	}
-
-	public void setVoterCount(int voterCount) {
-		this.voterCount = voterCount;
-	}
-
-
-	public Candidate(String candidateName, String candidatePhoto, int voterCount) {
-		super();
-		this.candidateName = candidateName;
-		this.candidatePhoto = candidatePhoto;
-		this.voterCount = voterCount;
-	}
-
-
-
-
-
 	public Candidate(int candidateId, String candidateName, String candidateAddress, String candidatePhoto) {
 		this.candidateId = candidateId;
 		this.candidateName = candidateName;
@@ -41,51 +15,52 @@ public class Candidate {
 	}
 
 
-	public int getCandidateId() {
-		return candidateId;
-	}
-
-
-	public void setCandidateId(int candidateId) {
+	public Candidate(int candidateId, String candidateName, String candidateAddress) {
+	
 		this.candidateId = candidateId;
-	}
-
-
-	public String getCandidateName() {
-		return candidateName;
-	}
-
-
-	public void setCandidateName(String candidateName) {
 		this.candidateName = candidateName;
-	}
-
-
-	public String getCandidateAddress() {
-		return candidateAddress;
-	}
-
-
-	public void setCandidateAddress(String candidateAddress) {
 		this.candidateAddress = candidateAddress;
 	}
 
 
+	public Candidate(int candidateId, String candidateName, String candidatePhoto, int voteCount) {
+		this.candidateId = candidateId;
+		this.candidateName = candidateName;
+		this.candidatePhoto = candidatePhoto;
+		this.voteCount = voteCount;
+	}
+
+
+	public int getCandidateId() {
+		return candidateId;
+	}
+	public void setCandidateId(int candidateId) {
+		this.candidateId = candidateId;
+	}
+	public String getCandidateName() {
+		return candidateName;
+	}
+	public void setCandidateName(String candidateName) {
+		this.candidateName = candidateName;
+	}
+	public String getCandidateAddress() {
+		return candidateAddress;
+	}
+	public void setCandidateAddress(String candidateAddress) {
+		this.candidateAddress = candidateAddress;
+	}
 	public String getCandidatePhoto() {
 		return candidatePhoto;
 	}
-
-
 	public void setCandidatePhoto(String candidatePhoto) {
 		this.candidatePhoto = candidatePhoto;
 	}
+	public int getVoteCount() {
+		return voteCount;
+	}
+	public void setVoteCount(int voteCount) {
+		this.voteCount = voteCount;
+	}
 	
 	
-	
-	
-	
-	
-	
-	
-
 }

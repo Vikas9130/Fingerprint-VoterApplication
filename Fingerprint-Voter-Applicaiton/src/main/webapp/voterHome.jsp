@@ -59,37 +59,26 @@
 					window.location.href = "candidateList.jsp";
 				}
 			</script>
-
-
-
-			<button class="button-right" onclick="redirectToNextPage()">Update
+		
+			<button class="button-right" onclick="redirectToUpdatePage()">Update
 				Details</button>
-
 			<script>
-				function redirectToNextPage() {
+				function redirectToUpdatePage() {
 					window.location.href = "voterUpdation.jsp";
 				}
 			</script>
 
-
-
-			<button class="button-center" onclick="redirectToNextPage()">Result</button>
-
+			<button class="button-center" onclick="redirectToResultPage()">Result</button>
 			<script>
-				function redirectToNextPage() {
+				function redirectToResultPage() {
 					window.location.href = "result.jsp";
 				}
 			</script>
-
-
 		</div>
 
-	</div>
-
-	<%
-	}
-	%>
-
-
+		<%
+		}
+		%>
+	
 </body>
 </html>

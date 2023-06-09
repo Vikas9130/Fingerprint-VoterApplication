@@ -4,11 +4,48 @@
 <html>
 <head>
   <title>Candidate List</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h2 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    img {
+      max-width: 100px;
+      max-height: 100px;
+    }
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
   <h2>Candidate List</h2>
 
-  <form action="voteServlet" method="post">
+  <form action="VoteServlet" method="post">
     <table>
       <thead>
         <tr>

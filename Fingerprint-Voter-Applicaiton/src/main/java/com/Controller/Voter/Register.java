@@ -2,6 +2,7 @@ package com.Controller.Voter;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
@@ -14,7 +15,7 @@ import jakarta.servlet.http.Part;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
+import java.io.File;
 
 import com.Dao.UserDAO;
 import com.Model.User;
@@ -42,7 +43,10 @@ public class Register extends HttpServlet {
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+		
+		    super.init(config);
+		    // Your initialization code here
+		
 	}
 
 	/**
@@ -82,15 +86,17 @@ public class Register extends HttpServlet {
 
 		UserDAO userDao = new UserDAO();
 		
+	
 		try {
 			
 			InputStream inputStream = null;
 			Part filePart = request.getPart("image");
 			String imageFileName = filePart.getSubmittedFileName();
 			System.out.println(imageFileName);
-			String uploadPath = "C:/Users/91913/git/Fingerprint-VoterApplication/Fingerprint-Voter-Applicaiton/src/main/webapp/voterImages/"
-					+ imageFileName;
-			FileOutputStream fos = new FileOutputStream(uploadPath);
+			
+			String path = getServletContext().getRealPath("") + File.separator +"voterImages";
+			File file = new File(path);
+			FileOutputStream fos = new FileOutputStream(path);
 			inputStream = filePart.getInputStream();
 			byte[] data = new byte[inputStream.available()];
 			inputStream.read(data);

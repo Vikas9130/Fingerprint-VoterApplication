@@ -22,78 +22,59 @@ import com.Model.Candidate;
  */
 public class CandidateList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CandidateList() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see Servlet#init(ServletConfig)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+	public CandidateList() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 List<Candidate> candidates = retrieveCandidates();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		List<Candidate> candidates = retrieveCandidates();
 
-		    request.setAttribute("candidates", candidates);
-		    request.getRequestDispatcher("candidateList.jsp").forward(request, response);
-		  }
+		request.setAttribute("candidates", candidates);
+		request.getRequestDispatcher("candidateList.jsp").forward(request, response);
+	}
+
 	private List<Candidate> retrieveCandidates() {
 		List<Candidate> candidates = new ArrayList<>();
-	    Connection connection = null;
-	    PreparedStatement statement = null;
-	    ResultSet resultSet = null;
 
-	    try {
-	      // Get a database connection
-	      connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/evoting", "root", "system");
-System.out.println("connection successful");
-	      // Prepare the SQL statement
-	      String sql = "SELECT candidate_id, candidate_name, candidate_address, candidate_photo FROM candidate LIMIT 4";
-	      statement = connection.prepareStatement(sql);
-	      System.out.println(sql);
-	      // Execute the SQL statement
-	      resultSet = statement.executeQuery();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			// Get a database connection
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/evoting", "root",
+					"system");
+			System.out.println("Connection successful");
 
-	      // Iterate over the result set and create Candidate objects
-	      while (resultSet.next()) {
-	        int candidateId = resultSet.getInt("candidate_id");
-	        String candidateName = resultSet.getString("candidate_name");
-	        String candidateAddress = resultSet.getString("candidate_address");
-	        String candidatePhoto = resultSet.getString("candidate_photo");
+			// Prepare the SQL statement
+			String sql = "SELECT candidate_id, candidate_name, candidate_address, candidate_photo FROM candidate LIMIT 4";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			System.out.println(sql);
 
-	        Candidate candidate = new Candidate(candidateId, candidateName, candidateAddress, candidatePhoto);
-	        candidates.add(candidate);
-	      }
-	    } catch (SQLException e) {
-	      e.printStackTrace();
-	    } finally {
-	      // Close the result set, statement, and connection
-	      try {
-	        if (resultSet != null) {
-	          resultSet.close();
-	        }
-	        if (statement != null) {
-	          statement.close();
-	        }
-	        if (connection != null) {
-	          connection.close();
-	        }
-	      } catch (SQLException e) {
-	        e.printStackTrace();
-	      }
-	    }
+			// Execute the SQL statement
+			ResultSet resultSet = statement.executeQuery();
 
-	    return candidates;
-	  }
+			// Iterate over the result set and create Candidate objects
+			while (resultSet.next()) {
+				int candidateId = resultSet.getInt("candidate_id");
+				String candidateName = resultSet.getString("candidate_name");
+				String candidateAddress = resultSet.getString("candidate_address");
+				String candidatePhoto = resultSet.getString("candidate_photo");
+
+				Candidate candidate = new Candidate(candidateId, candidateName, candidateAddress, candidatePhoto);
+				candidates.add(candidate);
+			}
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return candidates;
+	}
 
 }

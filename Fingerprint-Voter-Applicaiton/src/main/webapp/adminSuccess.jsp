@@ -33,6 +33,14 @@
             window.location.href = "addCandidate.jsp";
         }
     </script>
+    
+    <button class="submit-button" onclick="redirectToNextPage()">Delete Candidate</button>
+
+    <script>
+        function redirectToNextPage() {
+            window.location.href = "deleteCandidate.jsp";
+        }
+    </script>
 
 
 
