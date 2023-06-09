@@ -97,7 +97,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>VoteServlet</servlet-name>
-    <url-pattern>/voteServlet</url-pattern>
+    <url-pattern>/VoteServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -168,5 +168,15 @@
   <servlet-mapping>
     <servlet-name>AdminLoginServlet</servlet-name>
     <url-pattern>/AdminLoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteCandidate</display-name>
+    <servlet-name>DeleteCandidate</servlet-name>
+    <servlet-class>com.Controller.Condidate.DeleteCandidate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCandidate</servlet-name>
+    <url-pattern>/DeleteCandidate</url-pattern>
   </servlet-mapping>
 </web-app>
