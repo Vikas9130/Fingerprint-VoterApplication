@@ -22,7 +22,7 @@
 	String voterId = (String) session.getAttribute("voterId");
 	ResultSet resultset = statement.executeQuery(
 			"SELECT voter_card_number, name, dob, address, image FROM voter WHERE voter_card_number = '" + voterId + "'");
-	String imageFileName = (String) request.getAttribute("image1");
+	
 	%>
 
 	<%
@@ -75,7 +75,7 @@
 				}
 			</script>
 		</div>
-
+</div>
 		<%
 		}
 		%>

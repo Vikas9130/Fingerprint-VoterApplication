@@ -10,7 +10,7 @@
 <body>
  <div class="container">
  <h1>Add Candidate</h1>
-    <form action="AddCandidate" method="post" enctype="multipart/form-data">
+    <form action="AddCandidateServlet" method="post" enctype="multipart/form-data">
         <label for="name">Candidate Name:</label>
         <input type="text" id="name" name="name" required><br><br>
 

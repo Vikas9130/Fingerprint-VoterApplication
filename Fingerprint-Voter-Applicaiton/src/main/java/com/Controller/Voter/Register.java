@@ -17,13 +17,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.File;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import com.Dao.UserDAO;
 import com.Model.User;
 
 /**
  * Servlet implementation class Register
  */
-@MultipartConfig(maxFileSize = 16177216)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 5) // Limit the maximum file size to 5MB
 public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -90,20 +99,17 @@ public class Register extends HttpServlet {
 		try {
 			
 			InputStream inputStream = null;
-			Part filePart = request.getPart("image");
-			String imageFileName = filePart.getSubmittedFileName();
-			System.out.println(imageFileName);
+			Part photoPart = request.getPart("image");
+			  // Get the filename and file data from the photoPart
+		      String photoFileName = Paths.get(photoPart.getSubmittedFileName()).getFileName().toString();
+		      InputStream photoInputStream = photoPart.getInputStream();
+
+		      String photoSavePath = "C:/Users/91913/git/Fingerprint-VoterApplication/Fingerprint-Voter-Applicaiton/src/main/webapp/voterImages/" + photoFileName;
+		         Files.copy(photoInputStream, Paths.get(photoSavePath));
+		
 			
-			String path = getServletContext().getRealPath("") + File.separator +"voterImages";
-			File file = new File(path);
-			FileOutputStream fos = new FileOutputStream(path);
-			inputStream = filePart.getInputStream();
-			byte[] data = new byte[inputStream.available()];
-			inputStream.read(data);
-			fos.write(data);
-			fos.close();
-			userDao.insertUser(user, imageFileName);
-			request.setAttribute("image1", imageFileName);
+			userDao.insertUser(user, photoFileName);
+			request.setAttribute("image1", photoFileName);
 			RequestDispatcher rd = request.getRequestDispatcher("votersuccess.jsp");
 			rd.forward(request, response);
 		} catch (Exception e) {

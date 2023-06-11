@@ -99,8 +99,6 @@
     <servlet-name>GetResult</servlet-name>
     <url-pattern>/GetResult</url-pattern>
   </servlet-mapping>
-  
-
   <servlet>
     <description></description>
     <display-name>AddCandidate</display-name>
@@ -130,5 +128,15 @@
   <servlet-mapping>
     <servlet-name>DeleteCandidate</servlet-name>
     <url-pattern>/DeleteCandidate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddCandidateServlet</display-name>
+    <servlet-name>AddCandidateServlet</servlet-name>
+    <servlet-class>com.Controller.Condidate.AddCandidateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCandidateServlet</servlet-name>
+    <url-pattern>/AddCandidateServlet</url-pattern>
   </servlet-mapping>
 </web-app>

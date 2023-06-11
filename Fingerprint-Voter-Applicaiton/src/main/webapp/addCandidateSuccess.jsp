@@ -4,22 +4,22 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Vote Error</title>
+<title>Add Candidate</title>
 <link rel="stylesheet" href="css/style.css" type='text/css' />
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-<% String mes = (String) session.getAttribute("errorMessage"); %>
-<h1><%= mes %></h1>
-
+<% String mes1 = (String) session.getAttribute("successMessage"); %>
+<h1><%= mes1 %></h1>
 
 	<div class="container">
-<button class="button-center" onclick="redirectToVoterHomePage()">Home</button>
+<button class="button-center" onclick="redirectToAdminPanelPage()">Home</button>
 			<script>
-				function redirectToVoterHomePage() {
-					window.location.href = "voterHome.jsp";
+				function redirectToAdminPanelPage() {
+					window.location.href = "adminSuccess.jsp";
 				}
 			</script>
 </div>
+
 </body>
 </html>

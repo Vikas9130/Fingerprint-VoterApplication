@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/body.css" rel="stylesheet" type="text/css">
+     <link href="css/style.css" rel="stylesheet" type="text/css">
 
     <style>
         /* Add your custom CSS styles here */
@@ -71,7 +72,7 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br><br>
 
-        <input type="submit" value="Login">
+        <input class="submit-button" type="submit" value="Login">
     </form>
 </div>
 
