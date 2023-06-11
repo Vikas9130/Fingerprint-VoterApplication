@@ -81,16 +81,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>CandidateList</display-name>
-    <servlet-name>CandidateList</servlet-name>
-    <servlet-class>com.Controller.Condidate.CandidateList</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CandidateList</servlet-name>
-    <url-pattern>/CandidateList</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>VoteServlet</display-name>
     <servlet-name>VoteServlet</servlet-name>
     <servlet-class>com.Controller.Vote.VoteServlet</servlet-class>
@@ -109,46 +99,8 @@
     <servlet-name>GetResult</servlet-name>
     <url-pattern>/GetResult</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AddCandidateButton</display-name>
-    <servlet-name>AddCandidateButton</servlet-name>
-    <servlet-class>com.Controller.Buttons.AddCandidateButton</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AddCandidateButton</servlet-name>
-    <url-pattern>/AddCandidateButton</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>RemoveCandidateButton</display-name>
-    <servlet-name>RemoveCandidateButton</servlet-name>
-    <servlet-class>com.Controller.Buttons.RemoveCandidateButton</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RemoveCandidateButton</servlet-name>
-    <url-pattern>/RemoveCandidateButton</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>PublishResultButton</display-name>
-    <servlet-name>PublishResultButton</servlet-name>
-    <servlet-class>com.Controller.Buttons.PublishResultButton</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>PublishResultButton</servlet-name>
-    <url-pattern>/PublishResultButton</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>UpdateVoterButton</display-name>
-    <servlet-name>UpdateVoterButton</servlet-name>
-    <servlet-class>com.Controller.Buttons.UpdateVoterButton</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UpdateVoterButton</servlet-name>
-    <url-pattern>/UpdateVoterButton</url-pattern>
-  </servlet-mapping>
+  
+
   <servlet>
     <description></description>
     <display-name>AddCandidate</display-name>

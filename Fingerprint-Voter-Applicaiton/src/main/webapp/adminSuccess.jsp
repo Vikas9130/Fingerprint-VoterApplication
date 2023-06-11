@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,24 +26,32 @@
 
 
 <body>
-	<button class="submit-button" onclick="redirectToNextPage()">Add Candidate</button>
 
-    <script>
-        function redirectToNextPage() {
-            window.location.href = "addCandidate.jsp";
-        }
-    </script>
-    
-    <button class="submit-button" onclick="redirectToNextPage()">Delete Candidate</button>
+<%
+    String message= request.getParameter("msg");
+%>
+<jsp:include page="adminHeader.jsp"></jsp:include>
+<div class="container">
+	<button class="submit-button" onclick="redirectToAddCandidate()">Add
+		Candidate</button>
 
-    <script>
-        function redirectToNextPage() {
-            window.location.href = "deleteCandidate.jsp";
-        }
-    </script>
+	<script>
+		function redirectToAddCandidate() {
+			window.location.href = "addCandidate.jsp";
+		}
+	</script>
+
+	<button class="submit-button" onclick="redirectToDeleteCandidate()">Delete
+		Candidate</button>
+
+	<script>
+		function redirectToDeleteCandidate() {
+			window.location.href = "deleteCandidate.jsp";
+		}
+	</script>
 
 
-
+</div>
 
 
 

@@ -1,21 +1,27 @@
 package com.Controller.Vote;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Servlet implementation class VoteServlet
  */
 public class VoteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -40,57 +46,59 @@ public class VoteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Retrieve selected candidate IDs
-		String[] selectedCandidates = request.getParameterValues("selectedCandidates");
+		 HttpSession session = request.getSession();
+	        String voterId = (String) session.getAttribute("voterId");
+	        String[] selectedCandidates = request.getParameterValues("selectedCandidates");
 
-		// Process the vote
-		boolean success = processVote(selectedCandidates);
+	        String voterCardNumber = request.getParameter("voterCardNumber");
 
-		if (success) {
-			// Vote processed successfully
-			response.getWriter().println("Vote processed successfully.");
-		} else {
-			// Failed to process vote
-			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Failed to process vote.");
-		}
-	}
+	        try {
+	            Class.forName("com.mysql.cj.jdbc.Driver");
+	            String url = "jdbc:mysql://localhost:3306/evoting";
+	            String username = "root";
+	            String password = "system";
+	            Connection conn = DriverManager.getConnection(url, username, password);
 
-	private boolean processVote(String[] selectedCandidates) {
-		Connection connection = null;
-		PreparedStatement statement = null;
+	            if (selectedCandidates != null) {
+	                for (String candidate : selectedCandidates) {
+	                    // Check if the candidate has already voted
+	                    String sql = "SELECT voter_card_number FROM candidate WHERE candidate_name=?";
+	                    PreparedStatement checkStmt = conn.prepareStatement(sql);
+	                    checkStmt.setString(1, candidate);
+	                    ResultSet resultSet = checkStmt.executeQuery();
 
-		try {
-			// Get a database connection
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/evoting", "root", "system");
+	                    if (resultSet.next()) {
+	                        String existingVoterCardNumber = resultSet.getString("voter_card_number");
+	                        if (existingVoterCardNumber != null && existingVoterCardNumber.equals(voterCardNumber)) {
+	                            // The candidate has already voted with the same voter card number
+	                            String errorMessage = voterCardNumber + " has already voted. You cannot vote again.";
+	                            session.setAttribute("errorMessage", errorMessage);
+	                            RequestDispatcher dispatcher = request.getRequestDispatcher("voteError.jsp");
+	                            dispatcher.forward(request, response);
+	                            return;
+	                        }
+	                    }
 
-			// Prepare the SQL statement
-			String sql = "UPDATE candidate SET vote_count = vote_count + 1 WHERE candidate_id = ?";
-			statement = connection.prepareStatement(sql);
+	                    // Update vote count and voter card number for the candidate
+	                    String updateSql = "UPDATE candidate SET vote_count = vote_count + 1, voter_card_number = ? WHERE candidate_name=?";
+	                    PreparedStatement updateStmt = conn.prepareStatement(updateSql);
+	                    updateStmt.setString(1, voterCardNumber);
+	                    updateStmt.setString(2, candidate);
+	                    updateStmt.executeUpdate();
+	                    updateStmt.close();
+	                }
+	            }
 
-			// Execute the SQL statement for each selected candidate
-			for (String candidateId : selectedCandidates) {
-				statement.setInt(1, Integer.parseInt(candidateId));
-				statement.executeUpdate();
-			}
+	            // Set success message and forward to success page
+	            String successMessage = voterCardNumber + " has voted successfully.";
+	            session.setAttribute("successMessage", successMessage);
+	            RequestDispatcher dispatcher = request.getRequestDispatcher("voteSuccess.jsp");
+	            dispatcher.forward(request, response);
 
-			// Return true if the votes were processed successfully
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		} finally {
-			// Close the statement and connection
-			try {
-				if (statement != null) {
-					statement.close();
-				}
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+	        } catch (ClassNotFoundException | SQLException e) {
+	            e.printStackTrace();
+	        }
+
 	}
 
 }

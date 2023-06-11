@@ -23,6 +23,11 @@
   candidate_name VARCHAR(255) NOT NULL,
   candidate_gender VARCHAR(10) NOT NULL,
   candidate_address VARCHAR(255) NOT NULL,
-  candidate_photo LONGBLOB NOT NULL,
+  candidate_photo VARCHAR(255) NOT NULL,
   vote_count INT default'0'
 );
+
+ALTER TABLE candidate
+ADD COLUMN voter_card_number VARCHAR(10),
+ADD FOREIGN KEY (voter_card_number) REFERENCES voter (voter_card_number),
+ADD UNIQUE KEY (voter_card_number);
