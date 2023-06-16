@@ -22,9 +22,13 @@
   candidate_id INT AUTO_INCREMENT PRIMARY KEY,
   candidate_name VARCHAR(255) NOT NULL,
   candidate_gender VARCHAR(10) NOT NULL,
+  candidate_birth VARCHAR(10) NOT NULL,
   candidate_address VARCHAR(255) NOT NULL,
+  candidate_aadhar VARCHAR(10) NOT NULL,
   candidate_photo VARCHAR(255) NOT NULL,
-  vote_count INT default'0'
+  party_id INT NOT NULL,
+  vote_count INT DEFAULT 0,
+  FOREIGN KEY (party_id) REFERENCES party(party_id)
 );
 
 
