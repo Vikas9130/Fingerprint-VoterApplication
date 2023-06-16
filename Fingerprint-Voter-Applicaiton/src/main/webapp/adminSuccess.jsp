@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Admin Home</title>
 <link rel="stylesheet" href="css/style.css" type='text/css'>
 <style>
 .button-container {
@@ -74,6 +74,16 @@
 			window.location.href = "viewParty.jsp";
 		}
 	</script>
+	
+	<button class="submit-button" onclick="redirectToCandidateList()">View Candidate List</button>
+
+	<script>
+		function redirectToCandidateList() {
+			window.location.href = "wholeCandidateList.jsp";
+		}
+	</script>
+
+	
 
 
 </div>
