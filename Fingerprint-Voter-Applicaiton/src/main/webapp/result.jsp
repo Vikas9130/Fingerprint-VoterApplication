@@ -17,7 +17,7 @@ body {
 
 h1 {
 	color: #333;
-	text-align: center;ss
+	text-align: center;
 }
 
 table {
