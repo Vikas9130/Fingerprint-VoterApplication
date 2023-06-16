@@ -66,6 +66,14 @@
 			window.location.href = "addParty.jsp";
 		}
 	</script>
+	
+	<button class="submit-button" onclick="redirectToViewParty()">View Party</button>
+
+	<script>
+		function redirectToViewParty() {
+			window.location.href = "viewParty.jsp";
+		}
+	</script>
 
 
 </div>

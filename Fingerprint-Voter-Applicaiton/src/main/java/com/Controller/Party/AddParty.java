@@ -65,7 +65,7 @@ public class AddParty extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String name = request.getParameter("name");
+		String name = request.getParameter("partyName");
 		Part photoPart = request.getPart("partySymbol");
 
 		// Get the filename and file data from the photoPart
