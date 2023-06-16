@@ -27,7 +27,10 @@
   vote_count INT default'0'
 );
 
-ALTER TABLE candidate
-ADD COLUMN voter_card_number VARCHAR(10),
-ADD FOREIGN KEY (voter_card_number) REFERENCES voter (voter_card_number),
-ADD UNIQUE KEY (voter_card_number);
+
+CREATE TABLE party (
+  party_id INT PRIMARY KEY auto_increment,
+  party_name VARCHAR(100),
+  party_symbol VARCHAR(100)
+);
+

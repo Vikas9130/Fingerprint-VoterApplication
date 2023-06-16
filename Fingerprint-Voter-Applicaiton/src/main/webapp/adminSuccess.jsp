@@ -51,6 +51,23 @@
 	</script>
 
 
+<button class="submit-button" onclick="redirectToResult()">Result</button>
+
+	<script>
+		function redirectToResult() {
+			window.location.href = "result.jsp";
+		}
+	</script>
+	
+	<button class="submit-button" onclick="redirectToAddParty()">Add Party</button>
+
+	<script>
+		function redirectToAddParty() {
+			window.location.href = "addParty.jsp";
+		}
+	</script>
+
+
 </div>
 
 

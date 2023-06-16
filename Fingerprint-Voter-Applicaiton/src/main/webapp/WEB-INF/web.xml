@@ -139,4 +139,14 @@
     <servlet-name>AddCandidateServlet</servlet-name>
     <url-pattern>/AddCandidateServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddParty</display-name>
+    <servlet-name>AddParty</servlet-name>
+    <servlet-class>com.Controller.Party.AddParty</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddParty</servlet-name>
+    <url-pattern>/AddParty</url-pattern>
+  </servlet-mapping>
 </web-app>
