@@ -46,13 +46,13 @@ th, td {
 					for (Candidate candidate : candidates) {
 				%>
 				<tr>
-					<td><%=candidate.getCandidateId()%></td>
-					<td><%=candidate.getCandidateName()%></td>
-					<td><%=candidate.getCandidateAddress()%></td>
+					<td><%=candidate.getId()%></td>
+					<td><%=candidate.getName()%></td>
+					<td><%=candidate.getAddress()%></td>
 					<td>
 						<form action="DeleteCandidate" method="post">
 							<input type="hidden" name="candidateId"
-								value="<%=candidate.getCandidateId()%>">
+								value="<%=candidate.getId()%>">
 							<button type="submit">Delete</button>
 						</form>
 					</td>

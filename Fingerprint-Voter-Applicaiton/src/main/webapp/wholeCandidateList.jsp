@@ -56,7 +56,7 @@ img {
     </script>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="adminHeader.jsp"></jsp:include>
 <h1>Candidates List</h1>
 
     <table>
@@ -127,7 +127,7 @@ img {
                         <td><%= candidate.getBirth() %></td>
                         <td><%= candidate.getAddress() %></td>
                         <td><%= candidate.getAadhar() %></td>
-                        <td><%= candidate.getPhoto() %></td>
+                        <td><img src="candidateImages/<%= candidate.getPhoto() %>"></td>
                         <td><%= candidate.getPartyId() %></td>
                         <td><%= candidate.getVoteCount() %></td>
                     </tr>

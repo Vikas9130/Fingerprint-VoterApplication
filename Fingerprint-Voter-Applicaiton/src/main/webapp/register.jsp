@@ -5,7 +5,7 @@
 <link href="css/body.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="css/style.css" type='text/css' />
 <script type="text/javascript" src="js/formValidation.js"></script>
-
+<title>Registration</title>
 <style>
 .form-group img {
 	margin-left: 60px;
@@ -95,6 +95,7 @@
 								<option disabled selected>Select Gender</option>
 								<option value="male">Male</option>
 								<option value="female">Female</option>
+								<option value="female">Other</option>
 							</select>
 						</div>
 						<div class="form-group">

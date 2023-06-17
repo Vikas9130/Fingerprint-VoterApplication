@@ -149,4 +149,14 @@
     <servlet-name>AddParty</servlet-name>
     <url-pattern>/AddParty</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResultDeclarationServlet</display-name>
+    <servlet-name>ResultDeclarationServlet</servlet-name>
+    <servlet-class>com.Controller.Admin.ResultDeclarationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResultDeclarationServlet</servlet-name>
+    <url-pattern>/ResultDeclarationServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

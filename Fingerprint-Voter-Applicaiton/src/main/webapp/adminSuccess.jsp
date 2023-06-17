@@ -51,13 +51,13 @@
 	</script>
 
 
-<button class="submit-button" onclick="redirectToResult()">Result</button>
+<button class="submit-button" onclick="redirectToResultPage()">Declare Result</button>
 
 	<script>
-		function redirectToResult() {
-			window.location.href = "result.jsp";
-		}
-	</script>
+	function redirectToResultPage() {
+		window.location.href = "ResultDeclarationServlet";
+	}
+</script>
 	
 	<button class="submit-button" onclick="redirectToAddParty()">Add Party</button>
 

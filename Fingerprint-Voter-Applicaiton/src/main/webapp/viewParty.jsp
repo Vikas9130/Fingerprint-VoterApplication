@@ -40,7 +40,7 @@ img {
 </style>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="adminHeader.jsp"></jsp:include>
 <%@ page import="java.sql.*" %>
 <%
     String jdbcUrl = "jdbc:mysql://localhost:3306/evoting";
@@ -68,7 +68,7 @@ img {
         <tr>
             <td><%= resultSet.getInt("party_id") %></td>
             <td><%= resultSet.getString("party_name") %></td>
-            <td><%= resultSet.getString("party_symbol") %></td>
+            <td><img src="partyImages/<%= resultSet.getString("party_symbol") %>"></td>
         </tr>
         <% } %>
     </table>

@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="com.Model.Candidate"%>
-<%@ page import="java.util.*"%>
-<%@ page import="java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.Model.Candidate" %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,10 +55,21 @@ img {
 	// Create a statement to execute the query
 	Statement stmt = conn.createStatement();
 
-	// Execute the query to retrieve data in decreasing order of vote_count
-	String query = "SELECT candidate_name, candidate_gender, candidate_photo, vote_count " + "FROM candidate "
-			+ "ORDER BY vote_count DESC";
-	ResultSet rs = stmt.executeQuery(query);
+	// Execute the query to check if the result has been declared
+	String resultQuery = "SELECT result_declared FROM result_status";
+	ResultSet resultRs = stmt.executeQuery(resultQuery);
+	resultRs.next();
+	boolean resultDeclared = resultRs.getBoolean("result_declared");
+	
+	// Close the result set and statement for the result query
+	resultRs.close();
+
+	if (resultDeclared) {
+		// Execute the query to retrieve data in decreasing order of vote_count
+		String query = "SELECT candidate_name, candidate_gender, candidate_photo, vote_count " +
+				"FROM candidate " +
+				"ORDER BY vote_count DESC";
+		ResultSet rs = stmt.executeQuery(query);
 	%>
 	<div class="container">
 		<table>
@@ -78,8 +88,7 @@ img {
 				<tr>
 					<td><%=rs.getString("candidate_name")%></td>
 					<td><%=rs.getString("candidate_gender")%></td>
-					<td><img src="candidateImages/<%=rs.getString("candidate_photo")%>"
-						alt="Candidate Photo"></td>
+					<td><img src="candidateImages/<%=rs.getString("candidate_photo")%>" alt="Candidate Photo"></td>
 					<td><%=rs.getInt("vote_count")%></td>
 				</tr>
 				<%
@@ -96,7 +105,13 @@ img {
 
 	</div>
 	<%
-	rs.close();
+		rs.close();
+	} else {
+		// Show a message or redirect to a different page
+		out.println("<h1>Result has not been declared yet.</h1>");
+	}
+	
+	// Close the statement and connection
 	stmt.close();
 	conn.close();
 	%>
