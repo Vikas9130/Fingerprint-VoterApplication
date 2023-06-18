@@ -69,6 +69,7 @@ th, td {
 					window.location.href = "adminSuccess.jsp";
 				}
 			</script>
+			
 	</div>
 </body>
 </html>

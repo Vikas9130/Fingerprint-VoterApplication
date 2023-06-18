@@ -38,3 +38,10 @@ CREATE TABLE party (
   party_symbol VARCHAR(100)
 );
 
+
+CREATE TABLE your_table_name (
+    name VARCHAR(30) NOT NULL,
+    email VARCHAR(30) NOT NULL,
+    message VARCHAR(250) NOT NULL
+);
+

@@ -83,6 +83,13 @@
 		}
 	</script>
 
+<button class="submit-button" onclick="redirectToContactUs()">Manage Contact Us</button>
+
+	<script>
+		function redirectToContactUs() {
+			window.location.href = "adminContactUs.jsp";
+		}
+	</script>
 	
 
 

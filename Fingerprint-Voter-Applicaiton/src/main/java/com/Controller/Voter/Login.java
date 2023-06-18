@@ -70,7 +70,7 @@ public class Login extends HttpServlet {
         User user = new User();
         user.setPassword(password);
         user.setVoter_card_number(voterId);
-        String sql="select voter_card_number,password,name from voter where voter_card_number='"+voterId+"' and password='"+password+"'";
+        String sql="select voter_card_number,password,firstname from voter where voter_card_number='"+voterId+"' and password='"+password+"'";
 
         
         try {

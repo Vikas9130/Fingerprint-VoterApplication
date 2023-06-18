@@ -100,7 +100,13 @@
         <input class="submit-button" type="submit"
 				value="Add Candidate">
 		</form>
-		
+		<button class="submit-button" onclick="redirectToAdminPanel()">Home</button>
+
+	<script>
+		function redirectToAdminPanel() {
+			window.location.href = "adminSuccess.jsp";
+		}
+	</script>
 	</div>
 
 </body>

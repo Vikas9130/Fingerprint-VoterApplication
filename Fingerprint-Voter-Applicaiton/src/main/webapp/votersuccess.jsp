@@ -14,8 +14,9 @@
 	<%
 	Connection conn = UserDAO.getConnection();
 	Statement statement = conn.createStatement();
-	String userName = (String) session.getAttribute("userName");
-	String query = "SELECT voter_card_number, name, dob, address FROM voter WHERE name = '" + userName + "'";
+	String firstName = (String) session.getAttribute("firstName");
+	String middleName = (String) session.getAttribute("middleName");
+	String query = "SELECT voter_card_number, firstname, middlename, lastname, dob, address FROM voter WHERE firstname = '" + firstName + "' AND middlename = '" + middleName + "'";
 	ResultSet resultset = statement.executeQuery(query);
 	System.out.println(query);
 	String imageFileName = (String) request.getAttribute("image1");
@@ -33,13 +34,19 @@
 			<label for="voter-card-number">Voter Card Number:<%=resultset.getString(1)%></label>
 		</div>
 		<div class="form-group">
-			<label for="voter-name">Voter Name:<%=resultset.getString(2)%></label>
+			<label for="voter-name">First Name:<%=resultset.getString(2)%></label>
 		</div>
 		<div class="form-group">
-			<label for="date-of-birth">Date of Birth:<%=resultset.getString(3)%></label>
+			<label for="voter-name">Middle Name:<%=resultset.getString(3)%></label>
 		</div>
 		<div class="form-group">
-			<label for="address">Address:<%=resultset.getString(4)%></label>
+			<label for="voter-name">Last Name:<%=resultset.getString(4)%></label>
+		</div>
+		<div class="form-group">
+			<label for="date-of-birth">Date of Birth:<%=resultset.getString(5)%></label>
+		</div>
+		<div class="form-group">
+			<label for="address">Address:<%=resultset.getString(6)%></label>
 		</div>
 		<div class="form-group">
 			<label>Voter Photo: </label> <img id="photo-preview"

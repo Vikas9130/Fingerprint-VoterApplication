@@ -17,7 +17,9 @@
 	<script type="text/javascript">
 		// Function to validate the form fields
 		function validateForm() {
-			var nameInput = document.getElementById("name");
+			var firstNameInput = document.getElementById("firstName");
+			var middleNameInput = document.getElementById("middleName");
+			var lastNameInput = document.getElementById("lastName");
 			var genderSelect = document.getElementById("gender");
 			var dobInput = document.getElementById("dob");
 			var emailInput = document.getElementById("email");
@@ -27,7 +29,8 @@
 
 			// Check if required fields are empty
 			if (
-				nameInput.value === "" ||
+				firstNameInput.value === "" ||
+				lastNameInput.value === "" ||
 				genderSelect.value === "" ||
 				dobInput.value === "" ||
 				emailInput.value === "" ||
@@ -86,8 +89,16 @@
 						<p>Please fill in this form to create an account.</p>
 						<hr>
 						<div class="form-group">
-							<label for="name">Full Name:</label> <input type="text" id="name"
-								placeholder="Enter Full Name" name="name" required>
+							<label for="firstName">First Name:</label> <input type="text" id="firstName"
+								placeholder="Enter First Name" name="firstName" required>
+						</div>
+						<div class="form-group">
+							<label for="middleName">Middle Name:</label> <input type="text" id="middleName"
+								placeholder="Enter Middle Name" name="middleName">
+						</div>
+						<div class="form-group">
+							<label for="lastName">Last Name:</label> <input type="text" id="lastName"
+								placeholder="Enter Last Name" name="lastName" required>
 						</div>
 						<div class="form-group">
 							<label for="gender">Gender:</label> <select id="gender"
@@ -97,6 +108,10 @@
 								<option value="female">Female</option>
 								<option value="female">Other</option>
 							</select>
+						</div>
+						<div class="form-group">
+							<label for="aadhar">Aadhar Card No:</label> <input type="text"
+								id="aadhar" name="aadhar" required>
 						</div>
 						<div class="form-group">
 							<label for="dob">Date of Birth:</label> <input type="date"

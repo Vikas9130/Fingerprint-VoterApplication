@@ -48,23 +48,26 @@ public class UserDAO {
 
 	//connect to db, insert user record to the voter table
 	public void insertUser(User user, String imageFileName) throws SQLException {
-		final String insertUser = "insert into voter(name, gender, dob, email, address, password, userCreatedDate, image) values(?,?,?,?,?,?,?,?);";
+		final String insertUser = "insert into voter(firstname, middlename, lastname, gender, aadhar, dob, email, address, password, userCreatedDate, image) values(?,?,?,?,?,?,?,?,?,?,?);";
 		System.out.println(insertUser);
 		try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(insertUser)) {
-			ps.setString(1, user.getName());
-			ps.setString(2, user.getGender());
-			ps.setString(3, user.getDob());
-			ps.setString(4, user.getEmail());
-			ps.setString(5, user.getAddress());
-			ps.setString(6, user.getPassword());
+			ps.setString(1, user.getFirstName());
+			ps.setString(2, user.getMiddleName());
+			ps.setString(3, user.getLastName());
+			ps.setString(4, user.getGender());
+			ps.setString(5, user.getAadhar());
+			ps.setString(6, user.getDob());
+			ps.setString(7, user.getEmail());
+			ps.setString(8, user.getAddress());
+			ps.setString(9, user.getPassword());
 		
 
 			LocalDateTime localDateTime = LocalDateTime.now();
 			DateTimeFormatter formatterLocalDateTime = DateTimeFormatter.ofPattern("YYYY-MM-dd hh:mm:ss");
 			String result = formatterLocalDateTime.format(localDateTime);
 			System.out.println(result);
-			ps.setString(7, result);
-			ps.setString(8,imageFileName);
+			ps.setString(10, result);
+			ps.setString(11,imageFileName);
 
 			System.out.println(ps);
 
