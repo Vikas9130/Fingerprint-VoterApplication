@@ -159,4 +159,14 @@
     <servlet-name>ResultDeclarationServlet</servlet-name>
     <url-pattern>/ResultDeclarationServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>VoterDataServlet</display-name>
+    <servlet-name>VoterDataServlet</servlet-name>
+    <servlet-class>com.Controller.Voter.VoterDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VoterDataServlet</servlet-name>
+    <url-pattern>/VoterDataServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

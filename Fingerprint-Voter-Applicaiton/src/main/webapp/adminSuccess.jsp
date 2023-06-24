@@ -91,7 +91,22 @@
 		}
 	</script>
 	
+<button class="submit-button" onclick="redirectToViewVoterList()">View Voter List</button>
 
+	<script>
+		function redirectToViewVoterList() {
+			window.location.href = "viewAllVoters.jsp";
+		}
+	</script>
+	<%-- 	
+<button class="submit-button" onclick="redirectToUpdateVoterDetails()">Update Voter Details</button>
+
+	<script>
+		function redirectToUpdateVoterDetails() {
+			window.location.href = "voter_details.jsp";
+		}
+	</script>
+	--%>
 
 </div>
 

@@ -38,6 +38,17 @@ img {
 	max-height: 100px;
 }
 </style>
+<style>
+        /* Optional CSS styles for the print button */
+        .print-button {
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        function printPage() {
+            window.print();
+        }
+    </script>
 </head>
 <body>
 <jsp:include page="adminHeader.jsp"></jsp:include>
@@ -99,6 +110,7 @@ img {
         }
     }
 %>
+   <button class="submit-button" onclick="printPage()">Print</button>
     
 </body>
 </html>

@@ -11,6 +11,10 @@
 	margin-left: 60px;
 	margin-bottom: 10px;
 }
+.mandatory {
+    color: red;
+    margin-left: 5px;
+  }
 </style>
 </head>
 <body>
@@ -89,19 +93,19 @@
 						<p>Please fill in this form to create an account.</p>
 						<hr>
 						<div class="form-group">
-							<label for="firstName">First Name:</label> <input type="text" id="firstName"
+							<label for="firstName">First Name<span class="mandatory">*</span>:</label> <input type="text" id="firstName"
 								placeholder="Enter First Name" name="firstName" required>
 						</div>
 						<div class="form-group">
-							<label for="middleName">Middle Name:</label> <input type="text" id="middleName"
+							<label for="middleName">Middle Name<span class="mandatory">*</span>:</label> <input type="text" id="middleName"
 								placeholder="Enter Middle Name" name="middleName">
 						</div>
 						<div class="form-group">
-							<label for="lastName">Last Name:</label> <input type="text" id="lastName"
+							<label for="lastName">Last Name:<span class="mandatory">*</span></label> <input type="text" id="lastName"
 								placeholder="Enter Last Name" name="lastName" required>
 						</div>
 						<div class="form-group">
-							<label for="gender">Gender:</label> <select id="gender"
+							<label for="gender">Gender<span class="mandatory">*</span>:</label> <select id="gender"
 								name="gender" style="width: 270px; height: 33px;" required>
 								<option disabled selected>Select Gender</option>
 								<option value="male">Male</option>
@@ -110,11 +114,11 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="aadhar">Aadhar Card No:</label> <input type="text"
+							<label for="aadhar">Aadhar Card No<span class="mandatory">*</span>:</label> <input type="text"
 								id="aadhar" name="aadhar" required>
 						</div>
 						<div class="form-group">
-							<label for="dob">Date of Birth:</label> <input type="date"
+							<label for="dob">Date of Birth<span class="mandatory">*</span>:</label> <input type="date"
 								id="dob" name="dob" required>
 						</div>
 						<div class="form-group">
@@ -122,20 +126,22 @@
 								placeholder="Enter Email" name="email" required>
 						</div>
 						<div class="form-group">
-							<label for="address">Address:</label>
+							<label for="address">Address<span class="mandatory">*</span>:</label>
 							<textarea id="address" name="address" rows="4"></textarea>
 						</div>
 						<div class="form-group">
-							<label for="password">Password:</label> <input type="password"
+							<label for="password">Password<span class="mandatory">*</span>:</label> <input type="password"
 								id="password" placeholder="Enter Password" name="password"
 								required>
+								<small class="note">Password should be at least 8 characters long and contain at least one capital letter, one symbol character, and numbers.</small>
+
 						</div>
 						<hr>
 
 
 						<div class="form-group">
 
-							<label for="image">Upload Photo:</label> <input type="file"
+							<label for="image">Upload Photo<span class="mandatory">*</span>:</label> <input type="file"
 								class="file-input" id="photo-input" name="image"
 								accept="image/*"> <label for="photo-input"
 								class="file-label">Choose File</label> <img id="photo-preview"
