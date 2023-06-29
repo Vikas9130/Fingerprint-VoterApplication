@@ -114,6 +114,7 @@
 							</select>
 						</div>
 						<div class="form-group">
+						<p><span class="mandatory">*Please add space after four digits.</span></p>
 							<label for="aadhar">Aadhar Card No<span class="mandatory">*</span>:</label> <input type="text"
 								id="aadhar" name="aadhar" required>
 						</div>

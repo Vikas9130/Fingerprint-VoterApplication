@@ -8,6 +8,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Candidate</title>
+<style>
+.form-group img {
+	margin-left: 60px;
+	margin-bottom: 10px;
+}
+.mandatory {
+    color: red;
+    margin-left: 5px;
+  }
+</style>
 <link rel="stylesheet" href="css/style.css" type='text/css'>
 </head>
 
@@ -37,7 +47,7 @@
 				for="address">Address:</label>
 			<textarea id="address" name="address" rows="4" cols="50" required></textarea>
 			<br> <br> 
-			
+			<p><span class="mandatory">*Please add space after four digits.</span></p>
 			<label for="aadhaar">Aadhaar Number:</label>
 			<input type="text" id="aadhaar" name="aadhaar" pattern="[0-9]{4} [0-9]{4} [0-9]{4}">
 			
