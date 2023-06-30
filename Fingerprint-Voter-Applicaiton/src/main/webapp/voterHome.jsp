@@ -43,7 +43,7 @@
   Statement statement = conn.createStatement();
   String voterId = (String) session.getAttribute("voterId");
   ResultSet resultset = statement.executeQuery(
-    "SELECT voter_card_number, firstname, middlename, lastname, dob, address, image FROM voter WHERE voter_card_number = '"
+    "SELECT voter_card_number, firstname, middlename, lastname, dob, address, aadhar, image FROM voter WHERE voter_card_number = '"
     + voterId + "'");
   %>
 
@@ -52,48 +52,45 @@
   %>
 
   <div class="container">
-    <h1>Voter Details</h1>
+  <h1>Voter Details</h1>
 
-    <div class="form-group">
-      <label for="voter-card-number">Voter Card Number:<%=resultset.getString(1)%></label>
-    </div>
-    <div class="form-group">
-      <label for="voter-name">First Name:<%=resultset.getString(2)%></label>
-    </div>
-    <div class="form-group">
-      <label for="voter-name">Middle Name:<%=resultset.getString(3)%></label>
-    </div>
-    <div class="form-group">
-      <label for="voter-name">Last Name:<%=resultset.getString(4)%></label>
-    </div>
-    <div class="form-group">
-      <label for="date-of-birth">Date of Birth:<%=resultset.getString(5)%></label>
-    </div>
-    <div class="form-group">
-      <label for="address">Address:<%=resultset.getString(6)%></label>
-    </div>
-    <div class="form-group">
-      <label>Voter Photo: </label>
-      <img id="photo-preview" class="image-preview" src="voterImages/<%=resultset.getString(7)%>"
-        alt="Photo Preview" width="125" height="150">
-    </div>
-
-    <div class="button-container">
-      <button onclick="redirectToVotePage()">Vote</button>
-      <button onclick="redirectToResultPage()">Result</button>
-    </div>
-
-    <script>
-      function redirectToVotePage() {
-        window.location.href = "candidateList.jsp";
-      }
-
-      function redirectToResultPage() {
-        window.location.href = "result.jsp";
-      }
-    </script>
-
+  <div class="form-group">
+    <label for="voter-card-number">Voter Card Number: <%=resultset.getString(1)%></label>
   </div>
+  <div class="form-group">
+    <label for="voter-name">Voter Name: <%=resultset.getString(2) %> <%=resultset.getString(3) %> <%=resultset.getString(4) %></label>
+  </div>
+  <div class="form-group">
+    <label for="date-of-birth">Date of Birth: <%=resultset.getString(5)%></label>
+  </div>
+  <div class="form-group">
+    <label for="address">Address: <%=resultset.getString(6)%></label>
+  </div>
+   <div class="form-group">
+    <label for="address">Aadhar No: <%=resultset.getString(7)%></label>
+  </div>
+  <div class="form-group">
+    <label>Voter Photo: </label>
+    <img id="photo-preview" class="image-preview" src="voterImages/<%=resultset.getString(8)%>"
+      alt="Photo Preview" width="125" height="150">
+  </div>
+
+  <div class="button-container">
+    <button onclick="redirectToVotePage()">Vote</button>
+    <button onclick="redirectToResultPage()">Result</button>
+  </div>
+
+  <script>
+    function redirectToVotePage() {
+      window.location.href = "candidateList.jsp";
+    }
+
+    function redirectToResultPage() {
+      window.location.href = "result.jsp";
+    }
+  </script>
+</div>
+
   <%
   }
   %>

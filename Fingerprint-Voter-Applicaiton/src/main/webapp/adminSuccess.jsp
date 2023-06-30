@@ -1,119 +1,98 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Admin Home</title>
-<link rel="stylesheet" href="css/style.css" type='text/css'>
-<style>
-.button-container {
-	margin: 10px;
-}
+	<meta charset="ISO-8859-1">
+	<title>Admin Home</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		.button-container {
+			margin: 10px;
+		}
 
-.button {
-	padding: 10px 20px;
-	background-color: #4CAF50;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	font-size: 16px;
-}
-</style>
+		.submit-button {
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+	</style>
 </head>
-
-
-
 <body>
 
-<%
-    String message= request.getParameter("msg");
-%>
 <jsp:include page="adminHeader.jsp"></jsp:include>
-<div class="container">
-	<button class="submit-button" onclick="redirectToAddCandidate()">Add
-		Candidate</button>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-md-4">
+			<button class="submit-button btn btn-primary" onclick="redirectToAddCandidate()">Add Candidate</button>
+		</div>
+		<div class="col-md-4">
+			<button class="submit-button btn btn-primary" onclick="redirectToDeleteCandidate()">Delete Candidate</button>
+		</div>
+		<div class="col-md-4">
+			<button class="submit-button btn btn-primary" onclick="redirectToResultPage()">Declare Result</button>
+		</div>
+	</div>
 
-	<script>
-		function redirectToAddCandidate() {
-			window.location.href = "addCandidate.jsp";
-		}
-	</script>
+	<div class="row mt-3">
+		<div class="col-md-4">
+			<button class="submit-button btn btn-primary" onclick="redirectToAddParty()">Add Party</button>
+		</div>
+		<div class="col-md-4">
+			<button class="submit-button btn btn-primary" onclick="redirectToViewParty()">View Party</button>
+		</div>
+		<div class="col-md-4">
+			<button class="submit-button btn btn-primary" onclick="redirectToCandidateList()">View Candidate List</button>
+		</div>
+	</div>
 
-	<button class="submit-button" onclick="redirectToDeleteCandidate()">Delete
-		Candidate</button>
+	<div class="row mt-3">
+		<div class="col-md-4">
+			<button class="submit-button btn btn-primary" onclick="redirectToContactUs()">Manage Contact Us</button>
+		</div>
+		<div class="col-md-4">
+			<button class="submit-button btn btn-primary" onclick="redirectToViewVoterList()">View Voter List</button>
+		</div>
+	</div>
+</div>
 
-	<script>
-		function redirectToDeleteCandidate() {
-			window.location.href = "deleteCandidate.jsp";
-		}
-	</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+	function redirectToAddCandidate() {
+		window.location.href = "addCandidate.jsp";
+	}
 
+	function redirectToDeleteCandidate() {
+		window.location.href = "deleteCandidate.jsp";
+	}
 
-<button class="submit-button" onclick="redirectToResultPage()">Declare Result</button>
-
-	<script>
 	function redirectToResultPage() {
 		window.location.href = "ResultDeclarationServlet";
 	}
+
+	function redirectToAddParty() {
+		window.location.href = "addParty.jsp";
+	}
+
+	function redirectToViewParty() {
+		window.location.href = "viewParty.jsp";
+	}
+
+	function redirectToCandidateList() {
+		window.location.href = "wholeCandidateList.jsp";
+	}
+
+	function redirectToContactUs() {
+		window.location.href = "adminContactUs.jsp";
+	}
+
+	function redirectToViewVoterList() {
+		window.location.href = "viewAllVoters.jsp";
+	}
 </script>
-	
-	<button class="submit-button" onclick="redirectToAddParty()">Add Party</button>
-
-	<script>
-		function redirectToAddParty() {
-			window.location.href = "addParty.jsp";
-		}
-	</script>
-	
-	<button class="submit-button" onclick="redirectToViewParty()">View Party</button>
-
-	<script>
-		function redirectToViewParty() {
-			window.location.href = "viewParty.jsp";
-		}
-	</script>
-	
-	<button class="submit-button" onclick="redirectToCandidateList()">View Candidate List</button>
-
-	<script>
-		function redirectToCandidateList() {
-			window.location.href = "wholeCandidateList.jsp";
-		}
-	</script>
-
-<button class="submit-button" onclick="redirectToContactUs()">Manage Contact Us</button>
-
-	<script>
-		function redirectToContactUs() {
-			window.location.href = "adminContactUs.jsp";
-		}
-	</script>
-	
-<button class="submit-button" onclick="redirectToViewVoterList()">View Voter List</button>
-
-	<script>
-		function redirectToViewVoterList() {
-			window.location.href = "viewAllVoters.jsp";
-		}
-	</script>
-	<%-- 	
-<button class="submit-button" onclick="redirectToUpdateVoterDetails()">Update Voter Details</button>
-
-	<script>
-		function redirectToUpdateVoterDetails() {
-			window.location.href = "voter_details.jsp";
-		}
-	</script>
-	--%>
-
-</div>
-
-
-
-
-
 
 </body>
 </html>
