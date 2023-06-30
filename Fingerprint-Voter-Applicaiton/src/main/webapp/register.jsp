@@ -8,6 +8,18 @@
     <script type="text/javascript" src="js/formValidation.js"></script>
     <title>Registration</title>
     <style>
+    body {
+        background-color: #f7f7f7;
+    }
+
+    .container {
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
         .form-group img {
             margin-left: 60px;
             margin-bottom: 10px;
@@ -174,8 +186,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <p><span class="mandatory">*Please add space after four digits.</span></p>
                             <label for="aadhar">Aadhar Card No<span class="mandatory">*</span>:</label>
+                            <p><span class="mandatory">*Please add space after four digits.</span></p>
                             <input type="text" id="aadhar" class="form-control" name="aadhar" required>
                         </div>
                         <div class="form-group">

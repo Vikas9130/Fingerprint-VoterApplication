@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/body.css" rel="stylesheet" type="text/css">
-     <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         /* Add your custom CSS styles here */
@@ -40,20 +40,6 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-
-        input[type="submit"] {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
@@ -66,15 +52,21 @@
     <h1>Admin Login</h1>
 
     <form action="AdminLoginServlet" method="post">
-        <label for="adminId">Admin ID:</label>
-        <input type="text" id="adminId" name="adminId" required><br><br>
+        <div class="mb-3">
+            <label for="adminId" class="form-label">Admin ID:</label>
+            <input type="text" id="adminId" name="adminId" class="form-control" required>
+        </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+        </div>
 
-        <input class="submit-button" type="submit" value="Login">
+        <button type="submit" class="btn btn-primary">Login</button>
     </form>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

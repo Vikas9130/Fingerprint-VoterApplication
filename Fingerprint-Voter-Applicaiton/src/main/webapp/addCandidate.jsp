@@ -68,15 +68,44 @@
 				<label for="partyName">Select Party:</label>
 				<select name="partyName" class="form-control">
 					<%
-					ArrayList<String> partyNames = (ArrayList<String>) request.getAttribute("partyNames");
-					if (partyNames != null) {
-						for (String partyName : partyNames) {
-					%>
-					<option value="<%=partyName%>"><%=partyName%></option>
-					<%
-						}
-					}
-					%>
+    // Establish database connection
+    String url = "jdbc:mysql://localhost:3306/evoting";
+    String username = "root";
+    String password = "system";
+    Connection connection = null;
+    Statement statement = null;
+    ResultSet resultSet = null;
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        connection = DriverManager.getConnection(url, username, password);
+        statement = connection.createStatement();
+        String query = "SELECT party_name FROM party";
+        resultSet = statement.executeQuery(query);
+        // Create ArrayList to store party names
+        ArrayList<String> partyNames = new ArrayList<>();
+        while (resultSet.next()) {
+            String partyName = resultSet.getString("party_name");
+            partyNames.add(partyName);
+        }
+        
+        for (String partyName : partyNames) { %>
+        <option value="<%= partyName %>"><%= partyName %></option>
+      <% } %>
+        <%
+        // Set partyNames as a request attribute
+        request.setAttribute("partyNames", partyNames);
+    } catch (ClassNotFoundException | SQLException e) {
+        e.printStackTrace();
+    } finally {
+        // Close the database resources
+        if (resultSet != null) resultSet.close();
+        if (statement != null) statement.close();
+        if (connection != null) connection.close();
+    }
+%>
+
+
+
 				</select>
 			</div>
 			<div class="button-container">

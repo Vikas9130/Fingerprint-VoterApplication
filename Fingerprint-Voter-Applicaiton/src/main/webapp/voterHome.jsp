@@ -33,13 +33,19 @@
     background-color: #5cb85c;
     margin-left: 10px;
   }
+
+  /* Footer styles */
+  .footer {
+    background-color: #f7f7f7;
+    padding: 20px;
+    text-align: center;
+  }
 </style>
 </head>
 <body>
   <jsp:include page="header.jsp"></jsp:include>
 
-  <%
-  Connection conn = UserDAO.getConnection();
+  <% Connection conn = UserDAO.getConnection();
   Statement statement = conn.createStatement();
   String voterId = (String) session.getAttribute("voterId");
   ResultSet resultset = statement.executeQuery(
@@ -47,37 +53,44 @@
     + voterId + "'");
   %>
 
-  <%
-  while (resultset.next()) {
-  %>
+  <% while (resultset.next()) { %>
 
   <div class="container">
-  <h1>Voter Details</h1>
+    <h1>Voter Details</h1>
 
-  <div class="form-group">
-    <label for="voter-card-number">Voter Card Number: <%=resultset.getString(1)%></label>
-  </div>
-  <div class="form-group">
-    <label for="voter-name">Voter Name: <%=resultset.getString(2) %> <%=resultset.getString(3) %> <%=resultset.getString(4) %></label>
-  </div>
-  <div class="form-group">
-    <label for="date-of-birth">Date of Birth: <%=resultset.getString(5)%></label>
-  </div>
-  <div class="form-group">
-    <label for="address">Address: <%=resultset.getString(6)%></label>
-  </div>
-   <div class="form-group">
-    <label for="address">Aadhar No: <%=resultset.getString(7)%></label>
-  </div>
-  <div class="form-group">
-    <label>Voter Photo: </label>
-    <img id="photo-preview" class="image-preview" src="voterImages/<%=resultset.getString(8)%>"
-      alt="Photo Preview" width="125" height="150">
+    <div class="form-group">
+      <label for="voter-card-number">Voter Card Number: <%=resultset.getString(1)%></label>
+    </div>
+    <div class="form-group">
+      <label for="voter-name">Voter Name: <%=resultset.getString(2) %> <%=resultset.getString(3) %> <%=resultset.getString(4) %></label>
+    </div>
+    <div class="form-group">
+      <label for="date-of-birth">Date of Birth: <%=resultset.getString(5)%></label>
+    </div>
+    <div class="form-group">
+      <label for="address">Address: <%=resultset.getString(6)%></label>
+    </div>
+     <div class="form-group">
+      <label for="address">Aadhar No: <%=resultset.getString(7)%></label>
+    </div>
+    <div class="form-group">
+      <label>Voter Photo: </label>
+      <img id="photo-preview" class="image-preview" src="voterImages/<%=resultset.getString(8)%>"
+        alt="Photo Preview" width="125" height="150">
+    </div>
+
+    <div class="button-container">
+      <button onclick="redirectToVotePage()">Vote</button>
+      <button onclick="redirectToResultPage()">Result</button>
+    </div>
   </div>
 
-  <div class="button-container">
-    <button onclick="redirectToVotePage()">Vote</button>
-    <button onclick="redirectToResultPage()">Result</button>
+  <%
+  }
+  %>
+
+  <div class="footer">
+    &#169;2023 Copyright: Online Voting System.
   </div>
 
   <script>
@@ -89,11 +102,6 @@
       window.location.href = "result.jsp";
     }
   </script>
-</div>
-
-  <%
-  }
-  %>
 
 </body>
 </html>
